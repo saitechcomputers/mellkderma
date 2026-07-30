@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary build & extraction artifacts
+extracted_raw_images/
+page_1.png
+page_1_300.png
+page_2.png
+page_2_300.png
+3 Fold LBL_KD2512-083.pdf
+
+# OS junk
+.DS_Store
+Thumbs.db
