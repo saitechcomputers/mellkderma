@@ -15,7 +15,6 @@ export const PRODUCTS = [
     usage: "Shake well before use. Spray liberally 15 minutes before sun exposure onto face and body. Reapply every 2 hours or after swimming/sweating.",
     volume: "100ml / 3.38 FL OZ",
     image: "/images/products/skinoshell_spray.png",
-    bottleImage: "/images/products/skinoshell_spray_bottle.png",
     badge: "SPF 50 PA+++",
     featured: true
   },
