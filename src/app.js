@@ -208,6 +208,8 @@ let wishlistCount, openWishlistBtn;
 let quickViewOverlay, quickViewModal, quickViewBody, closeModalBtn;
 let quizOverlay, quizModal, quizModalBody, openQuizModalBtn, startQuizBtn, closeQuizModalBtn;
 let checkoutOverlay, checkoutModal, checkoutBody, closeCheckoutModalBtn;
+let policyOverlay, policyModal, policyModalBody, closePolicyModalBtn;
+let newsletterForm, newsletterEmail;
 let mobileToggleBtn, navMenu;
 
 // --- Initialization ---
@@ -215,6 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDOM();
   initTheme();
   renderProducts();
+  renderRegimen('am');
   renderScience();
   updateCartUI();
   updateWishlistUI();
@@ -270,6 +273,14 @@ function initDOM() {
   checkoutBody = document.getElementById('checkout-body');
   closeCheckoutModalBtn = document.getElementById('close-checkout-modal-btn');
 
+  policyOverlay = document.getElementById('policy-overlay');
+  policyModal = document.getElementById('policy-modal');
+  policyModalBody = document.getElementById('policy-modal-body');
+  closePolicyModalBtn = document.getElementById('close-policy-modal-btn');
+
+  newsletterForm = document.getElementById('newsletter-form');
+  newsletterEmail = document.getElementById('newsletter-email');
+
   mobileToggleBtn = document.getElementById('mobile-toggle-btn');
   navMenu = document.getElementById('nav-menu');
 }
@@ -304,8 +315,23 @@ function setupEventListeners() {
     setTheme(e.target.value);
   });
 
-  mobileToggleBtn?.addEventListener('click', () => {
+  mobileToggleBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
     navMenu?.classList.toggle('active');
+  });
+
+  // Close mobile nav when clicking any nav link
+  navMenu?.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu?.classList.remove('active');
+    });
+  });
+
+  // Close mobile nav when clicking outside
+  document.addEventListener('click', (e) => {
+    if (navMenu?.classList.contains('active') && !navMenu.contains(e.target) && !mobileToggleBtn?.contains(e.target)) {
+      navMenu.classList.remove('active');
+    }
   });
 
   categoryTabs?.addEventListener('click', (e) => {
@@ -371,6 +397,18 @@ function setupEventListeners() {
 
   closeCheckoutModalBtn?.addEventListener('click', closeCheckout);
   checkoutOverlay?.addEventListener('click', closeCheckout);
+
+  closePolicyModalBtn?.addEventListener('click', closePolicyModal);
+  policyOverlay?.addEventListener('click', closePolicyModal);
+
+  newsletterForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = newsletterEmail ? newsletterEmail.value.trim() : '';
+    if (email) {
+      if (newsletterEmail) newsletterEmail.value = '';
+      showToast('Subscribed! Welcome to the Mellkderma Dermatology Club.');
+    }
+  });
 
   openQuizModalBtn?.addEventListener('click', openQuiz);
   startQuizBtn?.addEventListener('click', openQuiz);
@@ -438,28 +476,35 @@ function renderProductsGrid(productsList) {
     const isWishlisted = state.wishlist.includes(p.id);
     return `
       <div class="product-card">
-        <span class="product-badge ${p.badge.includes('SPF') || p.badge.includes('Glow') ? 'gold' : ''}">${p.badge}</span>
+        <span class="product-badge gold">${p.badge}</span>
         
         <button class="product-wishlist-toggle ${isWishlisted ? 'active' : ''}" onclick="toggleWishlist('${p.id}')">
           <i class="${isWishlisted ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
         </button>
 
-        <div class="product-image-box">
+        <div class="product-image-box tint-${p.id}" onclick="openQuickView('${p.id}')" style="cursor: pointer;">
           <img src="${p.image}" alt="${p.name}" loading="lazy">
-          <button class="quick-view-trigger" onclick="openQuickView('${p.id}')">
+          <button class="quick-view-trigger" onclick="event.stopPropagation(); openQuickView('${p.id}')">
             <i class="fa-regular fa-eye"></i> Quick View
           </button>
         </div>
 
         <div class="product-content">
-          <span class="product-cat">${p.category}</span>
-          <h3 class="product-title">${p.name}</h3>
+          <div class="product-cat-row">
+            <span class="product-cat">${p.category}</span>
+            <span class="product-vol-pill">${p.volume.split('/')[0].trim()}</span>
+          </div>
+          <h3 class="product-title" onclick="openQuickView('${p.id}')" style="cursor: pointer;">${p.name}</h3>
           <p class="product-subname">${p.subname}</p>
+
+          <div class="product-meta-row">
+            <span class="skin-type-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> ${p.skinType}</span>
+          </div>
 
           <div class="product-rating">
             <i class="fa-solid fa-star"></i>
             <strong>${p.rating}</strong>
-            <span class="rating-count">(${p.reviewsCount})</span>
+            <span class="rating-count">(${p.reviewsCount} Verified Reviews)</span>
           </div>
 
           <div class="product-actives">
@@ -469,7 +514,6 @@ function renderProductsGrid(productsList) {
           <div class="product-footer">
             <div class="price-box">
               <span class="current-price">₹${p.price.toLocaleString('en-IN')}</span>
-              <span class="original-price">₹${p.originalPrice.toLocaleString('en-IN')}</span>
             </div>
             <button class="add-cart-btn" onclick="addToCart('${p.id}')">
               <i class="fa-solid fa-bag-shopping"></i> Add
@@ -642,33 +686,34 @@ window.openQuickView = function(productId) {
 
   quickViewBody.innerHTML = `
     <div class="quick-view-grid">
-      <div class="quick-view-image">
+      <div class="quick-view-image tint-${p.id}">
         <img src="${p.bottleImage || p.image}" alt="${p.name}">
       </div>
       <div class="quick-view-details">
-        <span class="product-cat">${p.category}</span>
+        <span class="product-cat">${p.category} &bull; ${p.volume}</span>
         <h2>${p.name}</h2>
-        <p class="subname">${p.subname} (${p.volume})</p>
+        <p class="subname">${p.subname}</p>
         
         <div class="quick-view-price">
-          ₹${p.price.toLocaleString('en-IN')} <del>₹${p.originalPrice.toLocaleString('en-IN')}</del>
+          ₹${p.price.toLocaleString('en-IN')}
         </div>
 
         <p class="quick-view-description">${p.description}</p>
 
         <div class="quick-view-tabs">
-          <button class="tab-btn active" onclick="switchModalTab(this, 'overview-tab')">Key Actives</button>
-          <button class="tab-btn" onclick="switchModalTab(this, 'usage-tab')">How To Use</button>
-          <button class="tab-btn" onclick="switchModalTab(this, 'skin-tab')">Skin Concerns</button>
+          <button class="tab-btn active" onclick="switchModalTab(this, 'overview-tab', '${p.id}')">Key Actives</button>
+          <button class="tab-btn" onclick="switchModalTab(this, 'usage-tab', '${p.id}')">How To Use</button>
+          <button class="tab-btn" onclick="switchModalTab(this, 'skin-tab', '${p.id}')">Skin Concerns</button>
         </div>
 
         <div class="tab-panel" id="modal-tab-content">
-          <strong>Active Formulations:</strong> ${p.activeIngredients.join(', ')}
+          <strong>Clinical Bio-Actives:</strong> ${p.activeIngredients.join(' • ')}<br>
+          <small style="color: var(--slate-muted); display: block; margin-top: 6px;">Net Volume: ${p.volume} | Dermatologically Tested</small>
         </div>
 
         <div style="display: flex; gap: 14px; margin-top: 24px;">
           <button class="btn btn-gold btn-lg" style="flex: 1;" onclick="addToCart('${p.id}'); closeQuickView();">
-            <i class="fa-solid fa-bag-shopping"></i> Add To Cart
+            <i class="fa-solid fa-bag-shopping"></i> Add To Cart — ₹${p.price.toLocaleString('en-IN')}
           </button>
         </div>
       </div>
@@ -679,19 +724,20 @@ window.openQuickView = function(productId) {
   quickViewModal?.classList.add('active');
 };
 
-window.switchModalTab = function(btn, tabType) {
+window.switchModalTab = function(btn, tabType, productId) {
   document.querySelectorAll('.quick-view-tabs .tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   
   const contentEl = document.getElementById('modal-tab-content');
-  if (!contentEl) return;
+  const p = state.products.find(item => item.id === productId);
+  if (!contentEl || !p) return;
 
   if (tabType === 'overview-tab') {
-    contentEl.innerHTML = `<strong>Active Formulations:</strong> Key bio-actives formulated in high concentration for maximal dermal absorption.`;
+    contentEl.innerHTML = `<strong>Clinical Bio-Actives:</strong> ${p.activeIngredients.join(' • ')}<br><small style="color: var(--slate-muted); display: block; margin-top: 6px;">Net Volume: ${p.volume} | Dermatologically Tested</small>`;
   } else if (tabType === 'usage-tab') {
-    contentEl.innerHTML = `<strong>Dermatologist Instructions:</strong> Apply onto cleansed skin. Gently massaged until fully absorbed into cellular layers.`;
+    contentEl.innerHTML = `<strong>Dermatologist Application Protocol:</strong> ${p.usage}`;
   } else {
-    contentEl.innerHTML = `<strong>Recommended Skin Profile:</strong> Ideal for daily defense, barrier restoration, and soothing inflammation.`;
+    contentEl.innerHTML = `<strong>Ideal Skin Profile:</strong> ${p.skinType}<br><strong>Targets:</strong> ${p.concern}`;
   }
 };
 
@@ -801,13 +847,13 @@ function renderQuizStep(step) {
         <h3 class="quiz-step-title">Your Customized Mellkderma Regimen</h3>
         <p class="quiz-step-subtitle">Based on your selection (${state.quizAnswers.skinType} + ${state.quizAnswers.concern})</p>
         
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 28px 0;">
+        <div class="quiz-recs-grid">
           ${recs.map(p => `
-            <div style="border: 1px solid var(--border-light); padding: 20px; border-radius: 12px; text-align: left; background: #fafafa;">
-              <img src="${p.image}" alt="${p.name}" style="height: 120px; object-fit: contain; margin: 0 auto 12px auto;">
-              <h4 style="font-family: var(--font-serif); font-size: 1rem;">${p.name}</h4>
-              <p style="font-size: 0.8rem; color: var(--slate-muted); margin-bottom: 10px;">${p.subname}</p>
-              <strong style="color: var(--gold-dark);">₹${p.price.toLocaleString('en-IN')}</strong>
+            <div class="quiz-rec-card">
+              <img src="${p.image}" alt="${p.name}">
+              <h4>${p.name}</h4>
+              <p>${p.subname}</p>
+              <strong>₹${p.price.toLocaleString('en-IN')}</strong>
               <button class="btn btn-dark btn-block" style="margin-top: 12px;" onclick="addToCart('${p.id}'); closeQuiz();">
                 Add Regimen Item
               </button>
@@ -836,35 +882,35 @@ function openCheckoutModal() {
   const grandTotal = subtotal - discountAmount + shipping;
 
   checkoutBody.innerHTML = `
-    <div style="padding: 36px;">
-      <h2 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--slate-dark); margin-bottom: 6px;">Secure Clinical Checkout</h2>
-      <p style="color: var(--slate-muted); font-size: 0.9rem; margin-bottom: 28px;">Complete your delivery & payment details below.</p>
+    <div class="checkout-modal-inner">
+      <h2 class="checkout-modal-title">Secure Clinical Checkout</h2>
+      <p class="checkout-modal-subtitle">Complete your delivery & payment details below.</p>
 
       <form id="checkout-form" onsubmit="handleOrderSubmit(event)">
-        <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 32px;">
+        <div class="checkout-layout-grid">
           
-          <div>
-            <h4 style="margin-bottom: 14px; font-size: 1rem; color: var(--slate-dark);"><i class="fa-solid fa-location-dot text-gold"></i> Shipping Address</h4>
+          <div class="checkout-form-col">
+            <h4 class="checkout-section-heading"><i class="fa-solid fa-location-dot text-gold"></i> Shipping Address</h4>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
-              <input type="text" placeholder="Full Name *" required style="padding: 10px 14px; border: 1px solid var(--border-light); border-radius: 8px;">
-              <input type="tel" placeholder="Mobile Phone *" required style="padding: 10px 14px; border: 1px solid var(--border-light); border-radius: 8px;">
+            <div class="form-row-2">
+              <input type="text" placeholder="Full Name *" required class="checkout-input">
+              <input type="tel" placeholder="Mobile Phone *" required class="checkout-input">
             </div>
 
-            <input type="email" placeholder="Email Address *" required style="width: 100%; padding: 10px 14px; border: 1px solid var(--border-light); border-radius: 8px; margin-bottom: 12px;">
+            <input type="email" placeholder="Email Address *" required class="checkout-input full-width">
             
-            <textarea placeholder="Street Address, Flat/House No. *" required rows="3" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border-light); border-radius: 8px; margin-bottom: 12px; font-family: inherit;"></textarea>
+            <textarea placeholder="Street Address, Flat/House No. *" required rows="3" class="checkout-textarea"></textarea>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 24px;">
-              <input type="text" placeholder="City *" required style="padding: 10px 14px; border: 1px solid var(--border-light); border-radius: 8px;">
-              <input type="text" placeholder="State *" required style="padding: 10px 14px; border: 1px solid var(--border-light); border-radius: 8px;">
-              <input type="text" placeholder="PIN Code *" required style="padding: 10px 14px; border: 1px solid var(--border-light); border-radius: 8px;">
+            <div class="form-row-3">
+              <input type="text" placeholder="City *" required class="checkout-input">
+              <input type="text" placeholder="State *" required class="checkout-input">
+              <input type="text" placeholder="PIN Code *" required class="checkout-input">
             </div>
 
-            <h4 style="margin-bottom: 14px; font-size: 1rem; color: var(--slate-dark);"><i class="fa-solid fa-credit-card text-gold"></i> Payment Method</h4>
+            <h4 class="checkout-section-heading"><i class="fa-solid fa-credit-card text-gold"></i> Payment Method</h4>
             
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-              <label style="border: 1px solid var(--border-light); padding: 12px 16px; border-radius: 8px; display: flex; align-items: center; gap: 12px; cursor: pointer;">
+            <div class="payment-options-list">
+              <label class="payment-method-label">
                 <input type="radio" name="payment" value="upi" checked>
                 <i class="fa-solid fa-qrcode text-teal" style="font-size: 1.2rem;"></i>
                 <div>
@@ -873,7 +919,7 @@ function openCheckoutModal() {
                 </div>
               </label>
 
-              <label style="border: 1px solid var(--border-light); padding: 12px 16px; border-radius: 8px; display: flex; align-items: center; gap: 12px; cursor: pointer;">
+              <label class="payment-method-label">
                 <input type="radio" name="payment" value="card">
                 <i class="fa-solid fa-credit-card text-gold" style="font-size: 1.2rem;"></i>
                 <div>
@@ -882,7 +928,7 @@ function openCheckoutModal() {
                 </div>
               </label>
 
-              <label style="border: 1px solid var(--border-light); padding: 12px 16px; border-radius: 8px; display: flex; align-items: center; gap: 12px; cursor: pointer;">
+              <label class="payment-method-label">
                 <input type="radio" name="payment" value="cod">
                 <i class="fa-solid fa-hand-holding-dollar text-slate" style="font-size: 1.2rem;"></i>
                 <div>
@@ -894,7 +940,7 @@ function openCheckoutModal() {
           </div>
 
           <!-- Order Summary Card -->
-          <div style="background: #f8fafc; border-radius: 14px; padding: 24px; border: 1px solid var(--border-light); height: fit-content;">
+          <div class="checkout-summary-card">
             <h4 style="font-family: var(--font-serif); font-size: 1.15rem; margin-bottom: 16px; color: var(--slate-dark);">Order Summary</h4>
             
             <div style="max-height: 200px; overflow-y: auto; margin-bottom: 16px;">
@@ -951,7 +997,7 @@ window.handleOrderSubmit = function(e) {
           <i class="fa-solid fa-check"></i>
         </div>
         <h2 style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--slate-dark); margin-bottom: 10px;">Order Placed Successfully!</h2>
-        <p style="color: var(--slate-muted); font-size: 1.05rem; margin-bottom: 24px;">Thank you for choosing Mellkderma Skincare. Your Order ID is <strong>#MKD-${Math.floor(100000 + Math.random() * 900000)}</strong>.</p>
+        <p style="color: var(--slate-muted); font-size: 1.05rem; margin-bottom: 24px;">Thank you for choosing Mellkderma Skincare Private Limited. Your Order ID is <strong>#MKD-${Math.floor(100000 + Math.random() * 900000)}</strong>.</p>
         <p style="font-size: 0.9rem; color: var(--slate-body); margin-bottom: 32px;">A confirmation receipt and tracking link have been dispatched to your email.</p>
 
         <button class="btn btn-primary btn-lg" onclick="finishOrderFlow()">Continue Shopping</button>
@@ -991,3 +1037,228 @@ function showToast(message) {
     setTimeout(() => toast.remove(), 300);
   }, 3200);
 }
+
+// --- AM / PM Clinical Regimen Protocol ---
+const REGIMEN_PROTOCOLS = {
+  am: {
+    title: "Morning Defense & Radiance Protocol (AM)",
+    subtitle: "Shields skin against UV/HEV radiation, urban oxidative stress, and hyperpigmentation.",
+    steps: [
+      { step: "STEP 01 • TREAT", productId: "vitamin-c-serum", note: "Apply 3–4 drops on clean skin to neutralize free radicals and brighten tone." },
+      { step: "STEP 02 • HYDRATE", productId: "brightening-complex-day", note: "Lock in multi-depth hydration and Japanese Oler Blend-II brightening actives." },
+      { step: "STEP 03 • SHIELD", productId: "skinoshell-spray", note: "Seal with broad-spectrum SPF 50 PA+++ UVA/UVB & HEV blue-light protection." }
+    ]
+  },
+  pm: {
+    title: "Nocturnal Cellular Repair Protocol (PM)",
+    subtitle: "Accelerates overnight collagen synthesis, melasma depigmentation, and 72-hour barrier recovery.",
+    steps: [
+      { step: "STEP 01 • TARGET", productId: "liposomal-serum", note: "Deliver encapsulated liposomes deep into dermal layers to fade stubborn dark spots." },
+      { step: "STEP 02 • RENEW", productId: "night-care", note: "Stimulate cellular turnover and firm fine lines with Retinol & Matrixyl 3000." },
+      { step: "STEP 03 • BARRIER LOCK", productId: "moisturizer-acne", note: "Restore lipid barrier overnight with oil-free Pentavitin 72-hour moisture lock." }
+    ]
+  }
+};
+
+function renderRegimen(mode = 'am') {
+  const stepsGrid = document.getElementById('regimen-steps-grid');
+  const bundleBar = document.getElementById('regimen-bundle-bar');
+  if (!stepsGrid || !bundleBar) return;
+
+  const protocol = REGIMEN_PROTOCOLS[mode] || REGIMEN_PROTOCOLS.am;
+  let totalPrice = 0;
+
+  stepsGrid.innerHTML = protocol.steps.map(item => {
+    const p = state.products.find(prod => prod.id === item.productId);
+    if (!p) return '';
+    totalPrice += p.price;
+    return `
+      <div class="regimen-step-card">
+        <span class="regimen-step-num">${item.step}</span>
+        <div class="regimen-step-img tint-${p.id}" onclick="openQuickView('${p.id}')">
+          <img src="${p.image}" alt="${p.name}" loading="lazy">
+        </div>
+        <div class="regimen-step-body">
+          <span class="product-cat">${p.category} &bull; ${p.volume.split('/')[0].trim()}</span>
+          <h4 onclick="openQuickView('${p.id}')">${p.name}</h4>
+          <p>${item.note}</p>
+          <div class="regimen-step-footer">
+            <strong>₹${p.price.toLocaleString('en-IN')}</strong>
+            <button type="button" class="btn btn-outline btn-sm" onclick="addToCart('${p.id}')">
+              <i class="fa-solid fa-plus"></i> Add Step
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  bundleBar.innerHTML = `
+    <div class="regimen-bundle-info">
+      <span class="bundle-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Complete 3-Step Clinical Kit</span>
+      <h4>${protocol.title}</h4>
+      <p>${protocol.subtitle}</p>
+    </div>
+    <div class="regimen-bundle-action">
+      <div class="bundle-price-tag">
+        <small>Complete 3-Product Kit Total</small>
+        <strong>₹${totalPrice.toLocaleString('en-IN')}</strong>
+      </div>
+      <button type="button" class="btn btn-gold btn-lg" onclick="addRegimenBundle('${mode}')">
+        <i class="fa-solid fa-bag-shopping"></i> Add Complete ${mode.toUpperCase()} Routine
+      </button>
+    </div>
+  `;
+}
+
+window.switchRegimen = function(mode) {
+  document.getElementById('am-regimen-btn')?.classList.toggle('active', mode === 'am');
+  document.getElementById('pm-regimen-btn')?.classList.toggle('active', mode === 'pm');
+  renderRegimen(mode);
+};
+
+window.addRegimenBundle = function(mode) {
+  const protocol = REGIMEN_PROTOCOLS[mode] || REGIMEN_PROTOCOLS.am;
+  protocol.steps.forEach(item => {
+    const product = state.products.find(p => p.id === item.productId);
+    if (!product) return;
+    const existing = state.cart.find(c => c.id === product.id);
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      state.cart.push({ ...product, quantity: 1 });
+    }
+  });
+  saveCart();
+  updateCartUI();
+  openCart();
+  showToast(`Complete ${mode.toUpperCase()} Clinical Regimen (3 items) added to cart!`);
+};
+
+// --- Footer Category Quick Filter ---
+window.filterByCategory = function(categoryName) {
+  state.category = categoryName;
+  document.querySelectorAll('.cat-tab').forEach(tab => {
+    tab.classList.toggle('active', tab.dataset.category === categoryName);
+  });
+  applyFilters();
+  document.getElementById('shop')?.scrollIntoView({ behavior: 'smooth' });
+};
+
+// --- Policy & Dermatologist Support Modal ---
+const POLICY_CONTENT = {
+  shipping: {
+    title: "Shipping & Express Delivery Policy",
+    icon: "fa-truck-fast",
+    body: `
+      <p><strong>Mellkderma Skincare Private Limited</strong> dispatches all clinical orders from our temperature-controlled Gurugram facility within 24 hours of confirmation.</p>
+      <ul style="margin: 16px 0; padding-left: 20px; line-height: 1.8; color: var(--slate-body);">
+        <li><strong>Free Express Shipping:</strong> Complimentary on all orders above ₹999 across India.</li>
+        <li><strong>Standard Delivery Timeline:</strong> 1–2 business days for Delhi NCR & Metro cities; 3–5 business days for rest of India.</li>
+        <li><strong>Packaging Integrity:</strong> All serums and sunscreens are sealed in UV-protected outer cartons to preserve active ingredient potency.</li>
+      </ul>
+    `
+  },
+  returns: {
+    title: "Return, Replacement & Refund Policy",
+    icon: "fa-rotate-left",
+    body: `
+      <p>We stand behind the clinical quality of every formulation produced by <strong>Mellkderma Skincare Private Limited</strong>.</p>
+      <ul style="margin: 16px 0; padding-left: 20px; line-height: 1.8; color: var(--slate-body);">
+        <li><strong>7-Day Damaged/Incorrect Item Replacement:</strong> In the rare event that your order arrives damaged or tampered, email <strong>care@mellkderma.com</strong> within 7 days for a free priority replacement.</li>
+        <li><strong>Refund Processing:</strong> Approved refunds are credited back to the original payment method within 5–7 business days.</li>
+      </ul>
+    `
+  },
+  terms: {
+    title: "Terms & Clinical Usage Conditions",
+    icon: "fa-file-contract",
+    body: `
+      <p>All formulations on <strong>www.mellkderma.com</strong> are dermatologist-formulated cosmeceuticals marketed by <strong>Mellkderma Skincare Private Limited</strong> (#155/1, Adarsh Nagar, New Rly Road, Gurugram).</p>
+      <p style="margin-top: 12px; color: var(--slate-body); line-height: 1.7;">For optimal safety, a patch test on the inner forearm 24 hours prior to facial application is recommended when introducing high-potency actives such as Retinol, Vitamin C, or Liposomal depigmenting serums.</p>
+    `
+  },
+  privacy: {
+    title: "Customer Data & Privacy Guarantee",
+    icon: "fa-user-shield",
+    body: `
+      <p><strong>Mellkderma Skincare Private Limited</strong> respects your privacy and protects your personal and skin-consultation records with 256-bit SSL encryption.</p>
+      <p style="margin-top: 12px; color: var(--slate-body); line-height: 1.7;">We never sell or share your phone number, email address, or skin analysis quiz responses with third-party marketers.</p>
+    `
+  },
+  consultation: {
+    title: "Dermatologist Skincare Consultation",
+    icon: "fa-user-doctor",
+    body: `
+      <p>Need personalized guidance on combining <strong>Mellkderma</strong> serums, sunscreens, or nocturnal repair treatments for your skin concern?</p>
+      <div style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 14px; padding: 20px; margin: 18px 0;">
+        <p style="margin-bottom: 8px;"><strong><i class="fa-solid fa-envelope text-gold"></i> Clinical Desk:</strong> care@mellkderma.com</p>
+        <p style="margin-bottom: 8px;"><strong><i class="fa-solid fa-location-dot text-gold"></i> Corporate Office:</strong> Mellkderma Skincare Private Limited, #155/1, Adarsh Nagar, New Rly Road, Gurugram</p>
+        <p><strong><i class="fa-solid fa-clock text-gold"></i> Consultation Hours:</strong> Mon – Sat, 10:00 AM to 7:00 PM IST</p>
+      </div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px;">
+        <a href="https://wa.me/919999999999?text=Hello%20Mellkderma%20Skincare%20Private%20Limited%2C%20I%20would%20like%20a%20skin%20consultation." target="_blank" rel="noopener" class="btn btn-whatsapp" style="flex: 1;">
+          <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+        <button type="button" class="btn btn-gold" style="flex: 1;" onclick="closePolicyModal(); openQuiz();">
+          <i class="fa-solid fa-stethoscope"></i> Take 60-Sec Skin Quiz
+        </button>
+      </div>
+    `
+  }
+};
+
+window.openPolicyModal = function(type) {
+  if (!policyModalBody) return;
+  const info = POLICY_CONTENT[type] || POLICY_CONTENT.consultation;
+
+  policyModalBody.innerHTML = `
+    <div>
+      <div style="width: 56px; height: 56px; border-radius: 16px; background: var(--clinical-teal-light); color: var(--clinical-teal-dark); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 18px;">
+        <i class="fa-solid ${info.icon}"></i>
+      </div>
+      <h3 class="quiz-step-title" style="text-align: left; font-size: 1.65rem; margin-bottom: 14px;">${info.title}</h3>
+      <div style="font-size: 0.96rem; color: var(--slate-body); line-height: 1.75;">
+        ${info.body}
+      </div>
+    </div>
+  `;
+
+  policyOverlay?.classList.add('active');
+  policyModal?.classList.add('active');
+};
+
+function closePolicyModal() {
+  policyOverlay?.classList.remove('active');
+  policyModal?.classList.remove('active');
+}
+
+// --- Order via WhatsApp ---
+window.orderViaWhatsApp = function() {
+  if (state.cart.length === 0) {
+    showToast('Add items to your cart first to order via WhatsApp');
+    return;
+  }
+
+  const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const discountAmount = state.appliedCoupon ? subtotal * state.appliedCoupon.discount : 0;
+  const shipping = subtotal >= 999 ? 0 : 99;
+  const grandTotal = subtotal - discountAmount + shipping;
+
+  const lines = [
+    "Hello *Mellkderma Skincare Private Limited*, I would like to place an order:",
+    "",
+    ...state.cart.map(item => `• ${item.name} (${item.volume.split('/')[0].trim()}) x${item.quantity} = ₹${(item.price * item.quantity).toLocaleString('en-IN')}`),
+    "",
+    `Subtotal: ₹${subtotal.toLocaleString('en-IN')}`,
+    ...(discountAmount > 0 ? [`Discount (MELLK10): -₹${discountAmount.toLocaleString('en-IN')}`] : []),
+    `Shipping: ${shipping === 0 ? 'FREE' : `₹${shipping}`}`,
+    `*Grand Total: ₹${grandTotal.toLocaleString('en-IN')}*`,
+    "",
+    "Please share the payment link / delivery confirmation."
+  ];
+
+  const url = `https://wa.me/919999999999?text=${encodeURIComponent(lines.join('\n'))}`;
+  window.open(url, '_blank', 'noopener');
+};
+

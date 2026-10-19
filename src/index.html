@@ -18,16 +18,6 @@
 </head>
 <body>
 
-  <!-- Top Announcement Bar -->
-  <div class="announcement-bar">
-    <div class="container announcement-content">
-      <span><i class="fa-solid fa-crown"></i> <strong>LUXURY DERMATOLOGY</strong> &bull; Free Express Delivery Above ₹999</span>
-      <span class="divider">|</span>
-      <span><i class="fa-solid fa-flask"></i> 100% Dermatologist Formulated & Tested</span>
-      <span class="divider">|</span>
-      <span class="promo-tag">Use Code <strong>MELLK10</strong> for 10% Instant OFF</span>
-    </div>
-  </div>
 
   <!-- Main Navigation Header -->
   <header class="main-header" id="header">
@@ -35,10 +25,9 @@
       
       <!-- Brand Logo -->
       <a href="#" class="brand-logo">
-        <span class="logo-mark">M</span>
         <div class="logo-text">
           <span class="brand-name">MELLKDERMA</span>
-          <span class="brand-tagline">CLINICAL DERMATOLOGY</span>
+          <span class="brand-tagline">SKINCARE PRIVATE LIMITED</span>
         </div>
       </a>
 
@@ -126,20 +115,51 @@
       </div>
 
       <div class="hero-visual">
+        <div class="hero-glow-backdrop"></div>
+        
         <div class="hero-card-glass">
-          <img src="public/images/hero_model.jpg" alt="Mellkderma Skincare Model" class="hero-img">
-          <div class="floating-badge badge-top">
-            <i class="fa-solid fa-shield-virus text-gold"></i>
-            <div>
-              <strong>UVA / UVB / HEV Defense</strong>
-              <small>Broad Spectrum SUNCAT DE 15%</small>
-            </div>
+          <img src="public/images/hero_editorial_model.png" alt="Mellkderma Skincare Private Limited" class="hero-img">
+          <div class="hero-card-overlay">
+            <span class="hero-clinical-stamp"><i class="fa-solid fa-certificate"></i> Clinically Tested Cellular Formulations</span>
           </div>
-          <div class="floating-badge badge-bottom">
-            <i class="fa-solid fa-droplet text-teal"></i>
-            <div>
-              <strong>72-HR Barrier Repair</strong>
-              <small>Pentavitin & Aquaxyl Matrix</small>
+        </div>
+
+        <!-- Floating 3D Badge Top-Left (Unclipped) -->
+        <div class="floating-badge badge-top">
+          <div class="badge-icon-wrap gold-wrap">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div>
+            <strong>UVA / UVB / HEV Defense</strong>
+            <small>Broad Spectrum SUNCAT DE 15%</small>
+          </div>
+        </div>
+
+        <!-- Floating 3D Badge Top-Right / Mid-Right (Unclipped) -->
+        <div class="floating-badge badge-bottom">
+          <div class="badge-icon-wrap teal-wrap">
+            <i class="fa-solid fa-droplet"></i>
+          </div>
+          <div>
+            <strong>72-HR Barrier Repair</strong>
+            <small>Pentavitin & Aquaxyl Matrix</small>
+          </div>
+        </div>
+
+        <!-- Floating Bestseller Product Spotlight Card -->
+        <div class="hero-product-spotlight" onclick="openQuickView('vitamin-c-serum')">
+          <div class="spotlight-img-wrap">
+            <img src="public/images/products/vitamin_c_serum.png" alt="Mellkderma Vitamin C Serum">
+          </div>
+          <div class="spotlight-info">
+            <span class="spotlight-tag"><i class="fa-solid fa-star"></i> 4.95 Bestseller</span>
+            <h4>Vitamin C Glow Serum</h4>
+            <p>3-O-Ethyl Ascorbic Acid + HA</p>
+            <div class="spotlight-Bottom">
+              <strong>₹2,499</strong>
+              <button type="button" class="spotlight-add-btn" onclick="event.stopPropagation(); addToCart('vitamin-c-serum')">
+                <i class="fa-solid fa-plus"></i> Add
+              </button>
             </div>
           </div>
         </div>
@@ -256,6 +276,34 @@
     </div>
   </section>
 
+  <!-- Interactive AM / PM Clinical Regimen Section -->
+  <section class="regimen-section" id="regimen">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">DERMATOLOGIST PROTOCOL</span>
+        <h2 class="section-title">Daily Clinical Skincare Regimen</h2>
+        <p class="section-desc">Follow our scientifically sequenced Morning Defense (AM) and Nocturnal Repair (PM) protocols for maximum cellular efficacy.</p>
+      </div>
+
+      <div class="regimen-switcher">
+        <button type="button" class="regimen-tab active" id="am-regimen-btn" onclick="switchRegimen('am')">
+          <i class="fa-solid fa-sun"></i> Morning Defense (AM)
+        </button>
+        <button type="button" class="regimen-tab" id="pm-regimen-btn" onclick="switchRegimen('pm')">
+          <i class="fa-solid fa-moon"></i> Nocturnal Repair (PM)
+        </button>
+      </div>
+
+      <div class="regimen-steps-grid" id="regimen-steps-grid">
+        <!-- Dynamically rendered via JS -->
+      </div>
+
+      <div class="regimen-bundle-bar" id="regimen-bundle-bar">
+        <!-- Dynamically rendered via JS -->
+      </div>
+    </div>
+  </section>
+
   <!-- Clinical Ingredients Spotlight Section -->
   <section class="science-section" id="science">
     <div class="container">
@@ -328,7 +376,7 @@
         <p>Subscribe for exclusive access to dermatologist tips, new clinical launches, and 15% OFF your next order.</p>
       </div>
       <form class="newsletter-form" id="newsletter-form">
-        <input type="email" placeholder="Enter your email address..." required>
+        <input type="email" id="newsletter-email" placeholder="Enter your email address..." required>
         <button type="submit" class="btn btn-gold">Subscribe <i class="fa-solid fa-paper-plane"></i></button>
       </form>
     </div>
@@ -340,48 +388,52 @@
       
       <div class="footer-col brand-col">
         <a href="#" class="brand-logo footer-logo">
-          <span class="logo-mark">M</span>
           <div class="logo-text">
             <span class="brand-name">MELLKDERMA</span>
-            <span class="brand-tagline">CLINICAL DERMATOLOGY</span>
+            <span class="brand-tagline">SKINCARE PRIVATE LIMITED</span>
           </div>
         </a>
         <p class="footer-about">
-          Mellkderma Skincare Pvt. Limited is dedicated to clinical excellence in skincare. Formulated with internationally patented bio-actives for targeted skin repair.
+          Mellkderma Skincare Private Limited is dedicated to clinical excellence in skincare. Formulated with internationally patented bio-actives for targeted skin repair.
         </p>
         <div class="social-links">
-          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#contact" onclick="showToast('Follow @mellkderma on Instagram'); return false;" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#contact" onclick="showToast('Follow Mellkderma Skincare on Facebook'); return false;" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#contact" onclick="showToast('Connect with Mellkderma Skincare Private Limited on LinkedIn'); return false;" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://wa.me/919999999999?text=Hello%20Mellkderma%20Skincare%2C%20I%20would%20like%20a%20dermatologist%20product%20recommendation." target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
       </div>
 
       <div class="footer-col">
         <h3>Quick Navigation</h3>
         <ul class="footer-links">
-          <li><a href="#shop">All Formulations</a></li>
-          <li><a href="#shop">Sunscreen SPF 50</a></li>
-          <li><a href="#shop">Vitamin C & Serums</a></li>
-          <li><a href="#shop">Acne & Dry Skin Care</a></li>
-          <li><a href="#quiz-banner">Skin Routine Finder</a></li>
+          <li><a href="#shop" onclick="filterByCategory('All')">All Formulations</a></li>
+          <li><a href="#shop" onclick="filterByCategory('Sun Care')">Sunscreen SPF 50</a></li>
+          <li><a href="#shop" onclick="filterByCategory('Serums')">Vitamin C & Serums</a></li>
+          <li><a href="#shop" onclick="filterByCategory('Moisturizers')">Acne & Dry Skin Care</a></li>
+          <li><a href="#regimen">AM / PM Daily Regimen</a></li>
+          <li><a href="#quiz-banner" onclick="openQuiz()">Skin Routine Finder</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h3>Customer Support</h3>
         <ul class="footer-links">
-          <li><a href="#">Shipping & Delivery Policy</a></li>
-          <li><a href="#">Return & Refund Policy</a></li>
-          <li><a href="#">Terms & Conditions</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Dermatologist Consultation</a></li>
+          <li><a href="#" onclick="openPolicyModal('shipping'); return false;">Shipping & Delivery Policy</a></li>
+          <li><a href="#" onclick="openPolicyModal('returns'); return false;">Return & Refund Policy</a></li>
+          <li><a href="#" onclick="openPolicyModal('terms'); return false;">Terms & Conditions</a></li>
+          <li><a href="#" onclick="openPolicyModal('privacy'); return false;">Privacy Policy</a></li>
+          <li><a href="#" onclick="openPolicyModal('consultation'); return false;">Dermatologist Consultation</a></li>
         </ul>
       </div>
 
       <div class="footer-col contact-col">
         <h3>Official Contact</h3>
         <ul class="contact-info">
+          <li>
+            <i class="fa-solid fa-location-dot"></i>
+            <span>#155/1, Adarsh Nagar, New Rly Road, Gurugram</span>
+          </li>
           <li>
             <i class="fa-solid fa-envelope"></i>
             <span>care@mellkderma.com</span>
@@ -397,7 +449,7 @@
 
     <div class="footer-bottom">
       <div class="container footer-bottom-content">
-        <p>&copy; 2026 Mellkderma Skincare Pvt. Limited. All Rights Reserved.</p>
+        <p>&copy; 2026 Mellkderma Skincare Private Limited. All Rights Reserved. &bull; <span class="powered-by">Powered By <strong>Saitech Computers</strong></span></p>
         <div class="payment-methods">
           <i class="fa-brands fa-cc-visa"></i>
           <i class="fa-brands fa-cc-mastercard"></i>
@@ -457,6 +509,9 @@
       <button class="btn btn-gold btn-block btn-lg" id="checkout-btn">
         Proceed to Checkout <i class="fa-solid fa-lock"></i>
       </button>
+      <button class="btn btn-whatsapp btn-block" id="whatsapp-order-btn" onclick="orderViaWhatsApp()">
+        <i class="fa-brands fa-whatsapp"></i> Instant Order on WhatsApp
+      </button>
     </div>
   </aside>
 
@@ -486,6 +541,21 @@
       <!-- Injected dynamically -->
     </div>
   </div>
+
+  <!-- Policy & Support Info Modal -->
+  <div class="modal-overlay" id="policy-overlay"></div>
+  <div class="modal-dialog quiz-modal" id="policy-modal">
+    <button class="close-modal-btn" id="close-policy-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+    <div class="quiz-modal-body" id="policy-modal-body">
+      <!-- Injected dynamically -->
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp Dermatologist Support Button -->
+  <a href="#" class="whatsapp-float-btn" onclick="openPolicyModal('consultation'); return false;" title="Ask a Mellkderma Expert">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span>Derm Expert</span>
+  </a>
 
   <!-- Notification Toast Container -->
   <div class="toast-container" id="toast-container"></div>
