@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="rose-gold">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | MELLKDERMA Skincare Private Limited</title>
+  <meta name="description" content="About Mellkderma Skincare Private Limited. Founded on the idea that everyone deserves to feel radiant with clean, high-performance dermatological formulations.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Montserrat:wght@700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="src/style.css">
+  <style>
+    .about-hero {
+      padding: 72px 0 48px 0;
+      background: radial-gradient(circle at 75% 25%, rgba(212, 175, 55, 0.14) 0%, transparent 60%), linear-gradient(180deg, #fdfbf7 0%, #faf9f5 100%);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .about-img-frame {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-gold);
+      position: relative;
+    }
+    .about-img-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .about-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold-dark);
+      background: rgba(212, 175, 55, 0.12);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      margin-bottom: 16px;
+    }
+    .about-title {
+      font-family: var(--font-luxury);
+      font-size: 2.8rem;
+      color: var(--slate-dark);
+      line-height: 1.25;
+      margin-bottom: 22px;
+    }
+    .about-lead {
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: var(--slate-dark);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .about-body-text {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--slate-body);
+      margin-bottom: 28px;
+    }
+    .about-quote-box {
+      background: var(--bg-banner);
+      border-left: 4px solid var(--gold-dark);
+      padding: 22px 28px;
+      border-radius: 12px;
+      margin: 28px 0;
+      box-shadow: var(--shadow-sm);
+    }
+    .about-quote-box p {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--banner-text);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .values-section {
+      padding: 68px 0;
+      background: #ffffff;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 40px;
+    }
+    .value-card {
+      background: var(--bg-pearl);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 36px 28px;
+      text-align: center;
+      transition: var(--transition-normal);
+    }
+    .value-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--border-gold);
+    }
+    .value-card i {
+      font-size: 2.4rem;
+      color: var(--gold-dark);
+      margin-bottom: 18px;
+    }
+    .value-card h3 {
+      font-family: var(--font-luxury);
+      font-size: 1.25rem;
+      color: var(--slate-dark);
+      margin-bottom: 12px;
+    }
+    .value-card p {
+      font-size: 0.92rem;
+      color: var(--slate-body);
+      line-height: 1.65;
+    }
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+      .about-title {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header" id="header">
+    <div class="container header-content">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo">
+        <div class="logo-text">
+          <span class="brand-name">MELLKDERMA</span>
+          <span class="brand-tagline">
+            <span>SKINCARE</span>
+            <span>PRIVATE</span>
+            <span>LIMITED</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link active">About Us</a>
+        <a href="index.html#manufacturing" class="nav-link">Manufacturing Quality</a>
+        <a href="index.html#shop" class="nav-link">Product Formulary</a>
+        <a href="index.html#science" class="nav-link">Bio-Actives</a>
+      </nav>
+
+      <!-- Action Utilities -->
+      <div class="header-actions">
+        <a href="index.html#contact" class="btn btn-gold btn-sm" style="display: inline-flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-file-signature"></i> Doctor / Trade Inquiry
+        </a>
+
+        <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Toggle Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- About Us Hero Section -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <span class="about-badge"><i class="fa-solid fa-sparkles"></i> Official Company Profile</span>
+          <h1 class="about-title">Beauty Begins With Confidence, And Confidence Starts With Self-Care</h1>
+          
+          <p class="about-lead">
+            At <strong>Mellkderma Skincare Private Limited</strong>, we believe beauty begins with confidence — and confidence starts with self-care. Our mission is to empower individuals to embrace their natural glow with cosmetics and clinical dermatological formulations that enhance, not mask, their true selves.
+          </p>
+
+          <p class="about-body-text">
+            Founded on the idea that everyone deserves to feel radiant, our brand combines high-performance formulas with clean, skin-loving ingredients. Whether you're getting ready to take on the world or unwind in your own skin, Mellkderma skincare is here to support your every moment with products that are kind to your skin and bold in impact.
+          </p>
+
+          <div class="about-quote-box">
+            <p>"We don't just create formulations — we create moments of self-love. Because when you shine from within, the world notices."</p>
+          </div>
+
+          <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px;">
+            <a href="index.html#shop" class="btn btn-gold btn-lg">
+              Explore Our Formulations <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+            <a href="index.html#contact" class="btn btn-outline btn-lg">
+              Contact Manufacturer Desk
+            </a>
+          </div>
+        </div>
+
+        <div class="about-img-frame">
+          <img src="public/images/hero_editorial_model.png" alt="Mellkderma Skincare Model">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Pillars / Values Section -->
+  <section class="values-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">OUR CLINICAL PILLARS</span>
+        <h2 class="section-title">The Philosophy Behind Mellkderma</h2>
+        <p class="section-desc">Committed to ethical formulation, transparency, and dermatological integrity.</p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <i class="fa-solid fa-flask-vial"></i>
+          <h3>High-Performance Formulas</h3>
+          <p>Every product integrates clinically documented bio-actives such as SUNCAT DE™, Clair Blanche III™, Encapsulated Retinol, and Matrixyl 3000 for measurable, reliable efficacy.</p>
+        </div>
+
+        <div class="value-card">
+          <i class="fa-solid fa-leaf"></i>
+          <h3>Clean, Skin-Loving Actives</h3>
+          <p>Paraben-free, mineral oil-free, and hypoallergenic. Formulated to nurture the stratum corneum barrier without irritation or comedogenicity.</p>
+        </div>
+
+        <div class="value-card">
+          <i class="fa-solid fa-award"></i>
+          <h3>Dermatologist Integrity</h3>
+          <p>Manufactured under strict GMP compliance for recommendation by qualified dermatologists, clinics, and healthcare specialists across India.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Corporate Contact & Manufacturing Info -->
+  <section style="padding: 60px 0; background: var(--bg-pearl); border-top: 1px solid var(--border-light);">
+    <div class="container" style="max-width: 860px; text-align: center;">
+      <span class="section-subtitle">MANUFACTURER CREDENTIALS</span>
+      <h2 class="section-title" style="font-size: 2rem;">Mellkderma Skincare Private Limited</h2>
+      <p style="color: var(--slate-muted); margin-bottom: 28px; line-height: 1.7;">
+        #155/1, Adarsh Nagar, New Rly Road, Gurugram, Haryana<br>
+        Official Email: <strong>care@mellkderma.com</strong> &bull; Website: <strong>www.mellkderma.com</strong>
+      </p>
+      <a href="index.html#shop" class="btn btn-gold btn-lg">
+        <i class="fa-solid fa-book-medical"></i> View Complete Product Formulary
+      </a>
+    </div>
+  </section>
+
+  <!-- Main Footer -->
+  <footer class="main-footer" id="contact">
+    <div class="container footer-grid">
+      
+      <div class="footer-col brand-col">
+        <a href="index.html" class="brand-logo footer-logo">
+          <div class="logo-text">
+            <span class="brand-name">MELLKDERMA</span>
+            <span class="brand-tagline">
+              <span>SKINCARE</span>
+              <span>PRIVATE</span>
+              <span>LIMITED</span>
+            </span>
+          </div>
+        </a>
+        <p class="footer-about">
+          Mellkderma Skincare Private Limited is a specialized pharmaceutical and clinical dermatology formulation manufacturer dedicated to precision bio-active science.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Product Portfolio</h3>
+        <ul class="footer-links">
+          <li><a href="index.html#shop">All Formulations</a></li>
+          <li><a href="index.html#shop">Photoprotection (SPF 50)</a></li>
+          <li><a href="index.html#shop">Depigmenting Serums</a></li>
+          <li><a href="index.html#shop">Barrier Repair Creams</a></li>
+          <li><a href="index.html#shop">Nocturnal Retinol Repair</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Company</h3>
+        <ul class="footer-links">
+          <li><a href="about.html">About Mellkderma</a></li>
+          <li><a href="index.html#manufacturing">Manufacturing Standards</a></li>
+          <li><a href="index.html#science">Bio-Actives Science</a></li>
+          <li><a href="index.html#contact">Doctor / Trade Inquiry</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col contact-col">
+        <h3>Manufacturer Head Office</h3>
+        <ul class="contact-info">
+          <li>
+            <i class="fa-solid fa-location-dot"></i>
+            <span>#155/1, Adarsh Nagar, New Rly Road, Gurugram, Haryana</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-envelope"></i>
+            <span>care@mellkderma.com</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-globe"></i>
+            <span>www.mellkderma.com</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Official Medical Disclaimer Notice in Footer -->
+    <div class="container">
+      <div class="medical-disclaimer-box">
+        <strong><i class="fa-solid fa-triangle-exclamation text-gold"></i> Regulatory & Prescribing Disclaimer:</strong>
+        The medicine details, compositions, indications, and M.R.P. published on this website are intended exclusively for reference, educational awareness, and the professional guidance of registered medical practitioners, clinics, and pharmacies. Mellkderma products are formulated for clinical efficacy. Patients must not use this portal for self-medication. Diagnosis and treatment must be obtained from a registered physician or dermatologist.
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <p>&copy; 2026 Mellkderma Skincare Private Limited. All Rights Reserved. &bull; <span class="powered-by">Powered By <strong>Saitech Computers</strong></span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const mobileBtn = document.getElementById('mobile-toggle-btn');
+    const navMenu = document.getElementById('nav-menu');
+    mobileBtn?.addEventListener('click', () => navMenu?.classList.toggle('active'));
+  </script>
+</body>
+</html>

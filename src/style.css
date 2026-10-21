@@ -252,6 +252,7 @@ html[data-theme="lavender-glow"] {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
   font-size: 16px;
 }
 
@@ -260,6 +261,7 @@ body {
   background-color: var(--bg-body);
   color: var(--slate-body);
   line-height: 1.6;
+  padding-top: 74px;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.4s ease, color 0.4s ease;
@@ -441,55 +443,81 @@ img {
 
 /* Header Navbar */
 .main-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0.92);
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-light);
-  transition: var(--transition-normal);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.main-header.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 8px 28px -6px rgba(15, 23, 42, 0.1);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.28);
 }
 
 .header-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  height: 86px;
+  gap: 28px;
+  height: 74px;
+  transition: height 0.3s ease;
+}
+
+.main-header.scrolled .header-content {
+  height: 64px;
 }
 
 /* Logo */
 .brand-logo {
   display: inline-flex;
   align-items: center;
+  text-decoration: none;
   flex-shrink: 0;
 }
 
 .logo-text {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: stretch;
+  width: fit-content;
 }
 
 .brand-name {
-  font-family: var(--font-luxury);
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 2.2px;
+  font-family: 'Montserrat', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-size: 1.52rem;
+  font-weight: 800;
+  letter-spacing: 1px;
   color: var(--slate-dark);
-  line-height: 1.05;
+  line-height: 1;
+  text-transform: uppercase;
   white-space: nowrap;
 }
 
 .brand-tagline {
-  font-size: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-family: 'Plus Jakarta Sans', 'Montserrat', sans-serif;
+  font-size: 0.58rem;
   font-weight: 800;
-  letter-spacing: 1.9px;
+  letter-spacing: 0.8px;
   color: var(--gold-dark);
-  margin-top: 3px;
-  white-space: nowrap;
+  margin-top: 5px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.brand-tagline span {
+  display: inline-block;
 }
 
 /* Navigation Links */
@@ -565,17 +593,17 @@ img {
 }
 
 .search-box input {
-  width: 190px;
-  padding: 9px 36px 9px 16px;
+  width: 230px;
+  padding: 8px 36px 8px 16px;
   border-radius: var(--radius-full);
   border: 1px solid var(--border-light);
   background: #f8fafc;
-  font-size: 0.85rem;
+  font-size: 0.83rem;
   transition: var(--transition-normal);
 }
 
 .search-box input:focus {
-  width: 220px;
+  width: 260px;
   background: #fff;
   border-color: var(--gold-primary);
   outline: none;
@@ -1061,6 +1089,149 @@ img {
   color: var(--slate-muted);
 }
 
+/* About Us Continuity Section on Home Page */
+.about-continuity-section {
+  padding: 84px 0;
+  background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.09) 0%, transparent 60%), linear-gradient(180deg, #fdfbf7 0%, #faf8f5 100%);
+  border-bottom: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-continuity-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.about-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--gold-dark);
+  background: rgba(212, 175, 55, 0.12);
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  margin-bottom: 18px;
+}
+
+.about-title {
+  font-family: var(--font-luxury);
+  font-size: 2.6rem;
+  color: var(--slate-dark);
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+
+.about-lead {
+  font-size: 1.12rem;
+  line-height: 1.75;
+  color: var(--slate-dark);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.about-body-text {
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: var(--slate-body);
+  margin-bottom: 24px;
+}
+
+.about-quote-box {
+  background: var(--bg-banner);
+  border-left: 4px solid var(--gold-dark);
+  padding: 22px 26px;
+  border-radius: 12px;
+  margin: 26px 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.about-quote-box p {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--banner-text);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.about-continuity-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.about-continuity-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.about-feature-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 22px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+  transition: var(--transition-normal);
+}
+
+.about-feature-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow-md);
+}
+
+.about-feature-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--gold-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.about-feature-text h4 {
+  font-family: var(--font-luxury);
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--slate-dark);
+  margin-bottom: 6px;
+}
+
+.about-feature-text p {
+  font-size: 0.88rem;
+  color: var(--slate-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  .about-continuity-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .about-title {
+    font-size: 2.1rem;
+  }
+}
+
 /* Quiz Banner Section */
 .quiz-banner-section {
   padding: 48px 0;
@@ -1211,11 +1382,25 @@ img {
   box-shadow: var(--shadow-sm);
 }
 
-/* Product Cards Grid */
+/* Product Cards Grid - Luxury 3-Column Formulary Display */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-  gap: 34px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+}
+
+@media (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 
 .product-card {
@@ -1478,7 +1663,7 @@ img {
 
 .product-title {
   font-family: var(--font-serif);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--slate-dark);
   margin-bottom: 8px;
@@ -1486,12 +1671,11 @@ img {
 }
 
 .product-subname {
-  font-size: 0.84rem;
+  font-size: 0.86rem;
   color: var(--slate-muted);
   margin-bottom: 14px;
-  height: 40px;
-  overflow: hidden;
-  line-height: 1.4;
+  min-height: 40px;
+  line-height: 1.45;
 }
 
 .product-rating {
@@ -1516,13 +1700,14 @@ img {
 }
 
 .active-tag {
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   background: #f1f5f9;
   color: var(--slate-heading);
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: var(--radius-full);
   font-weight: 600;
-  border: 1px solid rgba(226, 232, 240, 0.8);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  line-height: 1.4;
 }
 
 .product-footer {
@@ -2191,8 +2376,12 @@ img {
 .quick-view-image {
   background: radial-gradient(circle at 50% 50%, #ffffff 0%, #faf8f5 60%, #f3eee6 100%);
   border-radius: var(--radius-md);
-  padding: 16px;
-  min-height: 380px;
+  padding: 24px;
+  height: 440px;
+  max-height: 440px;
+  position: sticky;
+  top: 36px;
+  align-self: start;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2203,9 +2392,11 @@ img {
 
 .quick-view-image img {
   max-height: 350px;
-  max-width: 92%;
+  max-width: 90%;
+  width: auto;
+  height: auto;
   object-fit: contain;
-  transform: scale(1);
+  margin: auto;
   filter: drop-shadow(0 16px 32px rgba(15, 23, 42, 0.16));
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -2881,7 +3072,7 @@ html, body {
   }
   .nav-menu {
     position: fixed;
-    top: 78px;
+    top: 74px;
     left: 0;
     width: 100%;
     background: #ffffff;
@@ -3378,3 +3569,418 @@ html, body {
   }
 }
 
+
+
+/* ==========================================================================
+   MANUFACTURER & FORMULARY SHOWCASE STYLING
+   ========================================================================== */
+
+/* Manufacturer Product Card Footer */
+.manufacturer-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.mrp-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.mrp-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--slate-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.clinical-indication-badge {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--clinical-teal-dark);
+  background: var(--clinical-teal-light);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.product-actives-block {
+  margin-bottom: 16px;
+}
+
+.actives-heading {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--slate-muted);
+  margin-bottom: 6px;
+}
+
+.active-tag.more {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--gold-dark);
+  border-color: rgba(212, 175, 55, 0.35);
+}
+
+.view-details-btn {
+  background: var(--slate-dark);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.84rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-fast);
+  cursor: pointer;
+  border: none;
+}
+
+.view-details-btn:hover {
+  background: var(--gold-dark);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Monograph Modal Details */
+.monograph-modal-grid {
+  grid-template-columns: 0.92fr 1.08fr;
+  align-items: start;
+  gap: 36px;
+  padding: 38px 42px;
+}
+
+.monograph-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.monograph-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold-dark);
+  background: rgba(212, 175, 55, 0.12);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.monograph-price-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8fafc;
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  padding: 14px 20px;
+  margin: 18px 0;
+}
+
+.mrp-subtext {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--slate-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.manufacturer-seal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.6rem;
+  text-align: right;
+}
+
+.manufacturer-seal strong {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--slate-dark);
+}
+
+.manufacturer-seal small {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--slate-muted);
+}
+
+.packaging-spec-pill {
+  position: absolute;
+  bottom: 14px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.monograph-panel {
+  background: #f8fafc;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+}
+
+.panel-section {
+  line-height: 1.65;
+}
+
+.panel-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border-light);
+  font-size: 0.88rem;
+}
+
+.monograph-actions-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.monograph-regulatory-note {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 18px;
+  font-size: 0.82rem;
+  color: #92400e;
+  line-height: 1.5;
+  background: #fffbeb;
+  border: 1px solid #fef3c7;
+  padding: 10px 14px;
+  border-radius: 10px;
+}
+
+/* Regimen Protocol Box (replacing bundle checkout) */
+.regimen-protocol-box {
+  background: var(--slate-dark);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: 28px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  box-shadow: var(--shadow-ultra);
+  border: 1px solid var(--border-gold);
+}
+
+.protocol-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold-primary);
+}
+
+.protocol-info h4 {
+  font-family: var(--font-luxury);
+  font-size: 1.4rem;
+  color: #fff;
+  margin: 4px 0 6px 0;
+}
+
+.protocol-info p {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+}
+
+.protocol-disclaimer {
+  max-width: 440px;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  line-height: 1.5;
+}
+
+.protocol-disclaimer i {
+  font-size: 1.3rem;
+  color: var(--gold-primary);
+  flex-shrink: 0;
+}
+
+.regimen-mrp {
+  font-weight: 800;
+  color: var(--slate-dark);
+  font-size: 1.05rem;
+}
+
+/* Manufacturing & Quality Compliance Section */
+.manufacturing-section {
+  padding: 48px 0;
+}
+
+.manufacturing-card {
+  background: var(--bg-banner);
+  border-radius: var(--radius-lg);
+  padding: 48px 56px;
+  color: var(--banner-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--banner-border);
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+.manufacturing-content {
+  max-width: 600px;
+  position: relative;
+  z-index: 2;
+}
+
+.manufacturing-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--banner-subtext);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 14px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+}
+
+.manufacturing-content h2 {
+  font-family: var(--font-luxury);
+  font-size: 2.2rem;
+  margin-bottom: 14px;
+  line-height: 1.25;
+  color: var(--banner-text);
+}
+
+.manufacturing-content p {
+  color: var(--banner-subtext);
+  font-size: 1.05rem;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.manufacturing-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  min-width: 380px;
+  position: relative;
+  z-index: 2;
+}
+
+.mfg-badge-item {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 14px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: var(--shadow-sm);
+}
+
+.mfg-badge-item i {
+  font-size: 1.5rem;
+  color: var(--gold-dark);
+}
+
+.mfg-badge-item strong {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--slate-dark);
+}
+
+.mfg-badge-item small {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--slate-muted);
+}
+
+/* Medical Disclaimer in Footer */
+.medical-disclaimer-box {
+  background: rgba(15, 23, 42, 0.03);
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--gold-dark);
+  padding: 16px 22px;
+  border-radius: 10px;
+  margin: 32px 0 0 0;
+  font-size: 0.82rem;
+  color: var(--slate-muted);
+  line-height: 1.6;
+}
+
+.medical-disclaimer-box strong {
+  color: var(--slate-dark);
+}
+
+@media (max-width: 900px) {
+  .monograph-modal-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px 20px;
+  }
+  .quick-view-image {
+    position: static;
+    height: 300px;
+    max-height: 300px;
+    margin-bottom: 8px;
+  }
+  .manufacturing-card {
+    flex-direction: column;
+    padding: 36px 24px;
+    gap: 28px;
+  }
+  .manufacturing-badges-grid {
+    min-width: 100%;
+    grid-template-columns: 1fr;
+  }
+  .regimen-protocol-box {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 20px;
+  }
+  .protocol-disclaimer {
+    max-width: 100%;
+  }
+}

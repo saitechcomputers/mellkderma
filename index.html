@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MELLKDERMA | Advanced Dermatological Science</title>
-  <meta name="description" content="MELLKDERMA Skincare - Clinical dermatological solutions backed by science. Sunscreens, brightening serums, liposomal formulas, and anti-aging treatments.">
+  <title>MELLKDERMA | Clinical Dermatology & Pharmaceutical Formulary</title>
+  <meta name="description" content="Official clinical dermatology formulations and pharmaceutical product catalog by Mellkderma Skincare Private Limited. Detailed composition, M.R.P., and therapeutic indications for healthcare professionals.">
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Montserrat:wght@700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
-
 
   <!-- Main Navigation Header -->
   <header class="main-header" id="header">
@@ -27,35 +26,32 @@
       <a href="#" class="brand-logo">
         <div class="logo-text">
           <span class="brand-name">MELLKDERMA</span>
-          <span class="brand-tagline">SKINCARE PRIVATE LIMITED</span>
+          <span class="brand-tagline">
+            <span>SKINCARE</span>
+            <span>PRIVATE</span>
+            <span>LIMITED</span>
+          </span>
         </div>
       </a>
 
       <!-- Navigation Links -->
       <nav class="nav-menu" id="nav-menu">
         <a href="#hero" class="nav-link active">Home</a>
-        <a href="#shop" class="nav-link">Catalog</a>
-        <a href="#quiz-banner" class="nav-link highlight"><i class="fa-solid fa-sparkles"></i> Routine Finder</a>
-        <a href="#science" class="nav-link">Bio-Tech Science</a>
-        <a href="#reviews" class="nav-link">Reviews</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#about" class="nav-link">About Us</a>
+        <a href="#manufacturing" class="nav-link">Manufacturing Quality</a>
+        <a href="#shop" class="nav-link">Product Formulary</a>
+        <a href="#science" class="nav-link">Bio-Actives</a>
       </nav>
 
       <!-- Action Utilities -->
       <div class="header-actions">
         <div class="search-box">
-          <input type="text" id="global-search-input" placeholder="Search product or active ingredient...">
+          <input type="text" id="global-search-input" placeholder="Search medicine, molecule...">
           <button class="search-btn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
 
-        <button class="action-btn wishlist-btn" id="open-wishlist-btn" title="Wishlist">
-          <i class="fa-regular fa-heart"></i>
-          <span class="badge-count" id="wishlist-count">0</span>
-        </button>
-
-        <button class="action-btn cart-btn" id="open-cart-btn" title="Shopping Cart">
-          <i class="fa-solid fa-bag-shopping"></i>
-          <span class="badge-count" id="cart-count">0</span>
+        <button type="button" class="btn btn-gold btn-sm" onclick="openInquiryModal()" style="display: inline-flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-file-signature"></i> Doctor / Trade Inquiry
         </button>
 
         <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Toggle Menu">
@@ -66,50 +62,39 @@
     </div>
   </header>
 
-  <!-- Floating Live Theme Switcher Widget -->
-  <div class="theme-switcher-widget">
-    <span class="theme-switcher-title"><i class="fa-solid fa-palette text-gold"></i> Theme:</span>
-    <select id="theme-selector" class="theme-switcher-select">
-      <option value="rose-gold">✨ Rose Gold & Champagne</option>
-      <option value="royal-sapphire">💎 Royal Sapphire & Medical Cyan</option>
-      <option value="sage-botanical">🌿 Sage Botanical & Warm Sand</option>
-      <option value="lavender-glow">🔮 Pearl Lavender & Silver Glow</option>
-    </select>
-  </div>
-
-  <!-- Luxury Hero Banner Section -->
+  <!-- Luxury Hero Banner Section (Manufacturer & Clinical Science Focus) -->
   <section class="hero-section" id="hero">
     <div class="container hero-container">
       <div class="hero-text-content">
-        <span class="hero-pill"><i class="fa-solid fa-vial-circle-check"></i> Advanced Bio-Tech Innovation</span>
-        <h1 class="hero-title">Precision Skincare Engineered For <span>Radiant Skin</span></h1>
+        <span class="hero-pill"><i class="fa-solid fa-flask-vial"></i> Advanced Pharmaceutical Formulations</span>
+        <h1 class="hero-title">Precision Skincare Engineered For <span>Clinical Dermatology</span></h1>
         <p class="hero-description">
-          Formulated with internationally patented SUNCAT DE 15%, micro-encapsulated Retinol, Matrixyl 3000, and Aquaxyl to restore, defend, and rejuvenate your dermal barrier.
+          Official pharmaceutical product catalog manufactured by Mellkderma Skincare Private Limited. Formulated under strict pharmaceutical quality parameters with internationally patented SUNCAT DE 15%, micro-encapsulated Retinol, Matrixyl 3000, and Aquaxyl for verified clinical efficacy.
         </p>
 
         <div class="hero-actions">
           <a href="#shop" class="btn btn-gold btn-lg">
-            Explore Clinical Range <i class="fa-solid fa-arrow-right-long"></i>
+            Explore Product Formulary <i class="fa-solid fa-arrow-right-long"></i>
           </a>
-          <button class="btn btn-outline btn-lg" id="start-quiz-btn">
-            <i class="fa-solid fa-stethoscope"></i> Find Your Skin Routine
+          <button type="button" class="btn btn-outline btn-lg" onclick="openInquiryModal()">
+            <i class="fa-solid fa-file-signature"></i> Manufacturer Inquiries
           </button>
         </div>
 
         <div class="hero-stats">
           <div class="stat-item">
-            <span class="stat-num">100%</span>
-            <span class="stat-label">Dermatologist Tested</span>
+            <span class="stat-num">WHO-GMP</span>
+            <span class="stat-label">Quality Compliant</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
             <span class="stat-num">SPF 50+</span>
-            <span class="stat-label">PA+++ Protection</span>
+            <span class="stat-label">PA+++ Certified</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <span class="stat-num">48 HR</span>
-            <span class="stat-label">Moisture Retention</span>
+            <span class="stat-num">100%</span>
+            <span class="stat-label">Batch Analytical Testing</span>
           </div>
         </div>
       </div>
@@ -118,50 +103,7 @@
         <div class="hero-glow-backdrop"></div>
         
         <div class="hero-card-glass">
-          <img src="public/images/hero_editorial_model.png" alt="Mellkderma Skincare Private Limited" class="hero-img">
-          <div class="hero-card-overlay">
-            <span class="hero-clinical-stamp"><i class="fa-solid fa-certificate"></i> Clinically Tested Cellular Formulations</span>
-          </div>
-        </div>
-
-        <!-- Floating 3D Badge Top-Left (Unclipped) -->
-        <div class="floating-badge badge-top">
-          <div class="badge-icon-wrap gold-wrap">
-            <i class="fa-solid fa-shield-halved"></i>
-          </div>
-          <div>
-            <strong>UVA / UVB / HEV Defense</strong>
-            <small>Broad Spectrum SUNCAT DE 15%</small>
-          </div>
-        </div>
-
-        <!-- Floating 3D Badge Top-Right / Mid-Right (Unclipped) -->
-        <div class="floating-badge badge-bottom">
-          <div class="badge-icon-wrap teal-wrap">
-            <i class="fa-solid fa-droplet"></i>
-          </div>
-          <div>
-            <strong>72-HR Barrier Repair</strong>
-            <small>Pentavitin & Aquaxyl Matrix</small>
-          </div>
-        </div>
-
-        <!-- Floating Bestseller Product Spotlight Card -->
-        <div class="hero-product-spotlight" onclick="openQuickView('vitamin-c-serum')">
-          <div class="spotlight-img-wrap">
-            <img src="public/images/products/vitamin_c_serum.png" alt="Mellkderma Vitamin C Serum">
-          </div>
-          <div class="spotlight-info">
-            <span class="spotlight-tag"><i class="fa-solid fa-star"></i> 4.95 Bestseller</span>
-            <h4>Vitamin C Glow Serum</h4>
-            <p>3-O-Ethyl Ascorbic Acid + HA</p>
-            <div class="spotlight-Bottom">
-              <strong>₹2,499</strong>
-              <button type="button" class="spotlight-add-btn" onclick="event.stopPropagation(); addToCart('vitamin-c-serum')">
-                <i class="fa-solid fa-plus"></i> Add
-              </button>
-            </div>
-          </div>
+          <img src="public/images/hero_editorial_model.png" alt="Mellkderma Skincare Private Limited Model" class="hero-img">
         </div>
       </div>
     </div>
@@ -173,61 +115,151 @@
       <div class="trust-item">
         <i class="fa-solid fa-user-doctor"></i>
         <div>
-          <h4>Dermatologist Approved</h4>
-          <p>Clinically tested for sensitive & all skin types</p>
+          <h4>Dermatologist Formulated</h4>
+          <p>Engineered for clinical recommendation & prescription practice</p>
         </div>
       </div>
       <div class="trust-item">
         <i class="fa-solid fa-vial-virus"></i>
         <div>
-          <h4>Pure Bio-Actives</h4>
-          <p>SUNCAT DE, Retinol & Matrixyl 3000</p>
+          <h4>Pharmaceutical Bio-Actives</h4>
+          <p>SUNCAT DE, Retinol, Matrixyl 3000 & Aquaxyl</p>
         </div>
       </div>
       <div class="trust-item">
         <i class="fa-solid fa-feather"></i>
         <div>
-          <h4>Non-Comedogenic</h4>
-          <p>Zero pore-clogging heavy oils</p>
+          <h4>Non-Comedogenic & Pure</h4>
+          <p>Zero pore-clogging mineral oils or parabens</p>
         </div>
       </div>
       <div class="trust-item">
         <i class="fa-solid fa-award"></i>
         <div>
-          <h4>Visible Results</h4>
-          <p>Guaranteed skin barrier enhancement</p>
+          <h4>Batch Analytical Control</h4>
+          <p>Guaranteed active purity, stability & dermal safety</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Interactive Routine Finder Banner -->
-  <section class="quiz-banner-section" id="quiz-banner">
+  <!-- About Us & Clinical Philosophy Section (Seamless Continuity from Hero) -->
+  <section class="about-continuity-section" id="about">
     <div class="container">
-      <div class="quiz-card">
-        <div class="quiz-content">
-          <span class="quiz-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> Personalized Skin Consultation</span>
-          <h2>Unsure Which Mellkderma Formula Fits Your Skin?</h2>
-          <p>Take our 60-second Skin Analysis Quiz to unlock a personalized clinical regimen recommended for your specific skin concern.</p>
-          <button class="btn btn-gold btn-lg" id="open-quiz-modal-btn">
-            Start Skin Analysis <i class="fa-solid fa-chevron-right"></i>
+      <div class="about-continuity-grid">
+        
+        <div class="about-continuity-content">
+          <span class="about-badge"><i class="fa-solid fa-sparkles"></i> Official Company Profile</span>
+          <h2 class="about-title">Beauty Begins With Confidence, And Confidence Starts With Self-Care</h2>
+          
+          <p class="about-lead">
+            At <strong>Mellkderma Skincare Private Limited</strong>, we believe beauty begins with confidence — and confidence starts with self-care. Our mission is to empower individuals to embrace their natural glow with cosmetics and clinical dermatological formulations that enhance, not mask, their true selves.
+          </p>
+
+          <p class="about-body-text">
+            Founded on the idea that everyone deserves to feel radiant, our brand combines high-performance formulas with clean, skin-loving ingredients. Whether you're getting ready to take on the world or unwind in your own skin, Mellkderma skincare is here to support your every moment with products that are kind to your skin and bold in impact.
+          </p>
+
+          <div class="about-quote-box">
+            <p>"We don't just create formulations — we create moments of self-love. Because when you shine from within, the world notices."</p>
+          </div>
+
+          <div class="about-continuity-actions">
+            <a href="#shop" class="btn btn-gold btn-lg">
+              Explore Our Formulations <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+            <button type="button" class="btn btn-outline btn-lg" onclick="openInquiryModal()">
+              <i class="fa-solid fa-file-signature"></i> Contact Manufacturer Desk
+            </button>
+          </div>
+        </div>
+
+        <div class="about-continuity-cards">
+          <div class="about-feature-card">
+            <div class="about-feature-icon"><i class="fa-solid fa-flask-vial"></i></div>
+            <div class="about-feature-text">
+              <h4>Clean Clinical Actives</h4>
+              <p>Formulated with globally verified, internationally patented active complexes including Clair Blanche III™ Japan, SUNCAT DE™ 15%, Retinol, and Pentavitin®.</p>
+            </div>
+          </div>
+
+          <div class="about-feature-card">
+            <div class="about-feature-icon"><i class="fa-solid fa-microscope"></i></div>
+            <div class="about-feature-text">
+              <h4>Dermatological Precision</h4>
+              <p>Engineered exclusively for medical practitioners, clinics, and dermatologist recommendations. Every batch undergoes strict analytical assay verification.</p>
+            </div>
+          </div>
+
+          <div class="about-feature-card">
+            <div class="about-feature-icon"><i class="fa-solid fa-shield-heart"></i></div>
+            <div class="about-feature-text">
+              <h4>Pure Ethical Formulations</h4>
+              <p>100% Paraben-free, mineral oil-free, non-comedogenic, and hypoallergenic — kind to compromised skin barriers with maximum biological impact.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Manufacturing & Regulatory Quality Section (Replaces Consumer Quiz) -->
+  <section class="manufacturing-section" id="manufacturing">
+    <div class="container">
+      <div class="manufacturing-card">
+        <div class="manufacturing-content">
+          <span class="manufacturing-tag"><i class="fa-solid fa-industry"></i> Manufacturing Excellence & Compliance</span>
+          <h2>Manufactured Under Stringent Pharmaceutical Standards</h2>
+          <p>
+            Mellkderma Skincare Private Limited operates with state-of-the-art cleanroom manufacturing and rigorous Quality Control (QC/QA) laboratories. Every batch is evaluated for active potency, microbial purity, and epidermal tolerance.
+          </p>
+          <button type="button" class="btn btn-gold btn-lg" onclick="openPolicyModal('manufacturing')">
+            <i class="fa-solid fa-file-shield"></i> View Quality Standards <i class="fa-solid fa-chevron-right"></i>
           </button>
         </div>
-        <div class="quiz-decor">
-          <div class="quiz-icon-circle"><i class="fa-solid fa-microscope"></i></div>
+        <div class="manufacturing-badges-grid">
+          <div class="mfg-badge-item">
+            <i class="fa-solid fa-certificate"></i>
+            <div>
+              <strong>Cosmetic GMP & ISO Compliant</strong>
+              <small>Validated manufacturing protocols</small>
+            </div>
+          </div>
+          <div class="mfg-badge-item">
+            <i class="fa-solid fa-microscope"></i>
+            <div>
+              <strong>Class 100,000 Cleanrooms</strong>
+              <small>Sterile air filtration & contamination barrier</small>
+            </div>
+          </div>
+          <div class="mfg-badge-item">
+            <i class="fa-solid fa-vial-circle-check"></i>
+            <div>
+              <strong>HPLC Verified Bio-Actives</strong>
+              <small>Molecular purity & strength assay</small>
+            </div>
+          </div>
+          <div class="mfg-badge-item">
+            <i class="fa-solid fa-temperature-arrow-up"></i>
+            <div>
+              <strong>Accelerated Stability Tested</strong>
+              <small>40°C / 75% RH verified shelf-life</small>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Main Shop Catalog Section -->
+  <!-- Main Product Formulary Section (Medicine Information & M.R.P.) -->
   <section class="shop-section" id="shop">
     <div class="container">
       
       <div class="section-header">
-        <span class="section-subtitle">OUR CLINICAL RANGE</span>
-        <h2 class="section-title">Explore Mellkderma Products</h2>
-        <p class="section-desc">Targeted skincare formulations engineered by dermatological experts for superior skin health.</p>
+        <span class="section-subtitle">OFFICIAL PRODUCT FORMULARY</span>
+        <h2 class="section-title">Mellkderma Clinical Formulations</h2>
+        <p class="section-desc">Comprehensive pharmaceutical specifications, active compositions, and Maximum Retail Price (M.R.P.) for healthcare professionals and institutional stockists.</p>
       </div>
 
       <!-- Filter Controls & Category Tabs -->
@@ -244,31 +276,31 @@
 
         <div class="filter-dropdowns">
           <div class="filter-group">
-            <label for="concern-select"><i class="fa-solid fa-sliders"></i> Skin Concern:</label>
+            <label for="concern-select"><i class="fa-solid fa-sliders"></i> Clinical Focus:</label>
             <select id="concern-select">
-              <option value="All">All Skin Concerns</option>
-              <option value="Sun Protection">Sun Protection & HEV Light</option>
-              <option value="Hyperpigmentation">Hyperpigmentation & Dark Spots</option>
-              <option value="Acne Breakouts">Acne & Sebum Control</option>
-              <option value="Anti-Aging">Wrinkles & Anti-Aging</option>
-              <option value="Dryness">Extreme Dryness & Barrier</option>
+              <option value="All">All Therapeutic Focuses</option>
+              <option value="Photoprotection">Photoprotection & HEV Shield</option>
+              <option value="Hyperpigmentation">Hyperpigmentation & Melasma</option>
+              <option value="Acne">Acne & Barrier Regulation</option>
+              <option value="Aging">Photo-Aging & Retinol</option>
+              <option value="Dryness">Severe Xerosis & 48H Hydration</option>
             </select>
           </div>
 
           <div class="filter-group">
             <label for="sort-select"><i class="fa-solid fa-arrow-down-short-wide"></i> Sort By:</label>
             <select id="sort-select">
-              <option value="featured">Featured / Popular</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
-              <option value="rating">Highest Rated</option>
+              <option value="featured">Featured Formulations</option>
+              <option value="name-az">Medicine Name: A to Z</option>
+              <option value="price-low">M.R.P.: Low to High</option>
+              <option value="price-high">M.R.P.: High to Low</option>
             </select>
           </div>
         </div>
 
       </div>
 
-      <!-- Product Grid Container -->
+      <!-- Product Grid Container (Injected via JS) -->
       <div class="product-grid" id="product-grid">
         <!-- Dynamically injected via JS -->
       </div>
@@ -276,41 +308,13 @@
     </div>
   </section>
 
-  <!-- Interactive AM / PM Clinical Regimen Section -->
-  <section class="regimen-section" id="regimen">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">DERMATOLOGIST PROTOCOL</span>
-        <h2 class="section-title">Daily Clinical Skincare Regimen</h2>
-        <p class="section-desc">Follow our scientifically sequenced Morning Defense (AM) and Nocturnal Repair (PM) protocols for maximum cellular efficacy.</p>
-      </div>
-
-      <div class="regimen-switcher">
-        <button type="button" class="regimen-tab active" id="am-regimen-btn" onclick="switchRegimen('am')">
-          <i class="fa-solid fa-sun"></i> Morning Defense (AM)
-        </button>
-        <button type="button" class="regimen-tab" id="pm-regimen-btn" onclick="switchRegimen('pm')">
-          <i class="fa-solid fa-moon"></i> Nocturnal Repair (PM)
-        </button>
-      </div>
-
-      <div class="regimen-steps-grid" id="regimen-steps-grid">
-        <!-- Dynamically rendered via JS -->
-      </div>
-
-      <div class="regimen-bundle-bar" id="regimen-bundle-bar">
-        <!-- Dynamically rendered via JS -->
-      </div>
-    </div>
-  </section>
-
   <!-- Clinical Ingredients Spotlight Section -->
   <section class="science-section" id="science">
     <div class="container">
       <div class="section-header">
-        <span class="section-subtitle">THE SCIENCE OF BEAUTY</span>
-        <h2 class="section-title">Clinical Bio-Actives</h2>
-        <p class="section-desc">We combine pharmaceutical grade bio-actives with dermatological innovation for visible, lasting results.</p>
+        <span class="section-subtitle">PHARMACEUTICAL INNOVATION</span>
+        <h2 class="section-title">Patented Bio-Actives</h2>
+        <p class="section-desc">We formulate exclusively with clinically documented pharmaceutical-grade molecules for targeted dermal repair and cellular protection.</p>
       </div>
 
       <div class="science-grid" id="science-grid">
@@ -319,66 +323,18 @@
     </div>
   </section>
 
-  <!-- Customer Testimonials Section -->
-  <section class="reviews-section" id="reviews">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">REAL CLINICAL RESULTS</span>
-        <h2 class="section-title">Recommended By Dermatologists</h2>
-        <p class="section-desc">Over 10,000+ satisfied users trust Mellkderma for daily sun defense and barrier repair.</p>
-      </div>
-
-      <div class="reviews-grid">
-        <div class="review-card">
-          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <p class="review-text">"Skinoshell Spray SPF50 is a total game changer! As a doctor who is constantly outdoors, this sunscreen gives me SPF 50 without leaving any white residue or oily shine. 10/10!"</p>
-          <div class="review-author">
-            <div class="author-avatar">DR</div>
-            <div>
-              <strong>Dr. Ritu Sharma</strong>
-              <small>Dermatologist, New Delhi</small>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <p class="review-text">"The Night Care cream with Retinol and Matrixyl 3000 completely smoothed out my forehead fine lines within 4 weeks. Soft texture, premium packaging, worth every rupee."</p>
-          <div class="review-author">
-            <div class="author-avatar">AK</div>
-            <div>
-              <strong>Ananya K.</strong>
-              <small>Verified Buyer, Gurugram</small>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <p class="review-text">"Finding a moisturizer for acne-prone skin that doesn't trigger breakouts was impossible until I used Osebderm Hydra. Pentavitin keeps my skin hydrated all day long!"</p>
-          <div class="review-author">
-            <div class="author-avatar">SM</div>
-            <div>
-              <strong>Siddharth M.</strong>
-              <small>Verified Buyer, Mumbai</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Newsletter Section -->
-  <section class="newsletter-section">
+  <!-- Doctor & Trade Inquiry Banner Section -->
+  <section class="newsletter-section" id="inquiry">
     <div class="container newsletter-box">
       <div class="newsletter-content">
-        <h2>Join The Mellkderma Dermatology Club</h2>
-        <p>Subscribe for exclusive access to dermatologist tips, new clinical launches, and 15% OFF your next order.</p>
+        <h2>Doctor, Clinic & Institutional Supply Desk</h2>
+        <p>Are you a Dermatologist, Clinic, Hospital Pharmacy, or Licensed Stockist? Inquire for product monographs, sample kits, and institutional supply.</p>
       </div>
-      <form class="newsletter-form" id="newsletter-form">
-        <input type="email" id="newsletter-email" placeholder="Enter your email address..." required>
-        <button type="submit" class="btn btn-gold">Subscribe <i class="fa-solid fa-paper-plane"></i></button>
-      </form>
+      <div>
+        <button type="button" class="btn btn-gold btn-lg" onclick="openInquiryModal()">
+          <i class="fa-solid fa-paper-plane"></i> Submit Trade Inquiry
+        </button>
+      </div>
     </div>
   </section>
 
@@ -390,49 +346,51 @@
         <a href="#" class="brand-logo footer-logo">
           <div class="logo-text">
             <span class="brand-name">MELLKDERMA</span>
-            <span class="brand-tagline">SKINCARE PRIVATE LIMITED</span>
+            <span class="brand-tagline">
+              <span>SKINCARE</span>
+              <span>PRIVATE</span>
+              <span>LIMITED</span>
+            </span>
           </div>
         </a>
         <p class="footer-about">
-          Mellkderma Skincare Private Limited is dedicated to clinical excellence in skincare. Formulated with internationally patented bio-actives for targeted skin repair.
+          Mellkderma Skincare Private Limited is a specialized pharmaceutical and clinical dermatology formulation manufacturer dedicated to precision bio-active science.
         </p>
         <div class="social-links">
-          <a href="#contact" onclick="showToast('Follow @mellkderma on Instagram'); return false;" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#contact" onclick="showToast('Follow Mellkderma Skincare on Facebook'); return false;" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#contact" onclick="showToast('Connect with Mellkderma Skincare Private Limited on LinkedIn'); return false;" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="https://wa.me/919999999999?text=Hello%20Mellkderma%20Skincare%2C%20I%20would%20like%20a%20dermatologist%20product%20recommendation." target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#contact" onclick="showToast('Official Contact: care@mellkderma.com'); return false;" aria-label="Email" title="Official Email"><i class="fa-solid fa-envelope"></i></a>
+          <a href="#" onclick="openInquiryModal(); return false;" aria-label="Doctor & Trade Inquiry" title="Trade Inquiry Desk"><i class="fa-solid fa-file-signature"></i></a>
+          <a href="#" onclick="openPolicyModal('distribution'); return false;" aria-label="Distribution" title="Distribution Network"><i class="fa-solid fa-truck-medical"></i></a>
         </div>
       </div>
 
       <div class="footer-col">
-        <h3>Quick Navigation</h3>
+        <h3>Product Portfolio</h3>
         <ul class="footer-links">
           <li><a href="#shop" onclick="filterByCategory('All')">All Formulations</a></li>
-          <li><a href="#shop" onclick="filterByCategory('Sun Care')">Sunscreen SPF 50</a></li>
-          <li><a href="#shop" onclick="filterByCategory('Serums')">Vitamin C & Serums</a></li>
-          <li><a href="#shop" onclick="filterByCategory('Moisturizers')">Acne & Dry Skin Care</a></li>
-          <li><a href="#regimen">AM / PM Daily Regimen</a></li>
-          <li><a href="#quiz-banner" onclick="openQuiz()">Skin Routine Finder</a></li>
+          <li><a href="#shop" onclick="filterByCategory('Sun Care')">Photoprotection (SPF 50)</a></li>
+          <li><a href="#shop" onclick="filterByCategory('Serums')">Depigmenting Serums</a></li>
+          <li><a href="#shop" onclick="filterByCategory('Moisturizers')">Barrier Repair Creams</a></li>
+          <li><a href="#shop" onclick="filterByCategory('Anti-Aging')">Nocturnal Retinol Repair</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h3>Customer Support</h3>
+        <h3>Compliance & Info</h3>
         <ul class="footer-links">
-          <li><a href="#" onclick="openPolicyModal('shipping'); return false;">Shipping & Delivery Policy</a></li>
-          <li><a href="#" onclick="openPolicyModal('returns'); return false;">Return & Refund Policy</a></li>
-          <li><a href="#" onclick="openPolicyModal('terms'); return false;">Terms & Conditions</a></li>
-          <li><a href="#" onclick="openPolicyModal('privacy'); return false;">Privacy Policy</a></li>
-          <li><a href="#" onclick="openPolicyModal('consultation'); return false;">Dermatologist Consultation</a></li>
+          <li><a href="#about">About Mellkderma</a></li>
+          <li><a href="#" onclick="openPolicyModal('manufacturing'); return false;">Manufacturing & GMP Standards</a></li>
+          <li><a href="#" onclick="openPolicyModal('distribution'); return false;">Distribution & Stockist Network</a></li>
+          <li><a href="#" onclick="openPolicyModal('disclaimer'); return false;">Medical Notice & Disclaimer</a></li>
+          <li><a href="#science">Bio-Actives Innovation</a></li>
         </ul>
       </div>
 
       <div class="footer-col contact-col">
-        <h3>Official Contact</h3>
+        <h3>Manufacturer Head Office</h3>
         <ul class="contact-info">
           <li>
             <i class="fa-solid fa-location-dot"></i>
-            <span>#155/1, Adarsh Nagar, New Rly Road, Gurugram</span>
+            <span>#155/1, Adarsh Nagar, New Rly Road, Gurugram, Haryana</span>
           </li>
           <li>
             <i class="fa-solid fa-envelope"></i>
@@ -447,115 +405,102 @@
 
     </div>
 
+    <!-- Official Medical Disclaimer Notice in Footer -->
+    <div class="container">
+      <div class="medical-disclaimer-box">
+        <strong><i class="fa-solid fa-triangle-exclamation text-gold"></i> Regulatory & Prescribing Disclaimer:</strong>
+        The medicine details, compositions, indications, and M.R.P. published on this website are intended exclusively for reference, educational awareness, and the professional guidance of registered medical practitioners, clinics, and pharmacies. Mellkderma products are formulated for clinical efficacy. Patients must not use this portal for self-medication. Diagnosis and treatment must be obtained from a registered physician or dermatologist.
+      </div>
+    </div>
+
     <div class="footer-bottom">
       <div class="container footer-bottom-content">
         <p>&copy; 2026 Mellkderma Skincare Private Limited. All Rights Reserved. &bull; <span class="powered-by">Powered By <strong>Saitech Computers</strong></span></p>
-        <div class="payment-methods">
-          <i class="fa-brands fa-cc-visa"></i>
-          <i class="fa-brands fa-cc-mastercard"></i>
-          <i class="fa-solid fa-building-columns"></i>
-          <i class="fa-solid fa-qrcode"></i> (UPI Accepted)
-        </div>
       </div>
     </div>
   </footer>
 
-  <!-- Slide-out Shopping Cart Drawer -->
-  <div class="cart-drawer-overlay" id="cart-overlay"></div>
-  <aside class="cart-drawer" id="cart-drawer">
-    <div class="cart-header">
-      <h3><i class="fa-solid fa-bag-shopping"></i> Your Cart (<span id="cart-item-count">0</span>)</h3>
-      <button class="close-btn" id="close-cart-btn"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-
-    <div class="free-shipping-bar">
-      <div class="shipping-msg" id="shipping-msg">Add ₹999 more for FREE Shipping!</div>
-      <div class="progress-track"><div class="progress-fill" id="shipping-progress"></div></div>
-    </div>
-
-    <div class="cart-items-body" id="cart-items-body">
-      <!-- Injected dynamically -->
-    </div>
-
-    <div class="cart-footer">
-      <div class="coupon-box">
-        <input type="text" id="coupon-input" placeholder="Promo Code (e.g. MELLK10)">
-        <button id="apply-coupon-btn" class="btn btn-dark">Apply</button>
-      </div>
-      <div class="coupon-applied-tag" id="coupon-tag" style="display: none;">
-        <span>Code MELLK10 Applied (10% OFF)</span>
-        <button id="remove-coupon-btn">&times;</button>
-      </div>
-
-      <div class="cart-summary-rows">
-        <div class="summary-row">
-          <span>Subtotal</span>
-          <span id="cart-subtotal">₹0.00</span>
-        </div>
-        <div class="summary-row" id="discount-row" style="display: none;">
-          <span>Discount</span>
-          <span class="text-teal" id="cart-discount">-₹0.00</span>
-        </div>
-        <div class="summary-row">
-          <span>Shipping Fee</span>
-          <span id="cart-shipping">Calculated at checkout</span>
-        </div>
-        <div class="summary-row total-row">
-          <span>Grand Total</span>
-          <strong id="cart-grand-total">₹0.00</strong>
-        </div>
-      </div>
-
-      <button class="btn btn-gold btn-block btn-lg" id="checkout-btn">
-        Proceed to Checkout <i class="fa-solid fa-lock"></i>
-      </button>
-      <button class="btn btn-whatsapp btn-block" id="whatsapp-order-btn" onclick="orderViaWhatsApp()">
-        <i class="fa-brands fa-whatsapp"></i> Instant Order on WhatsApp
-      </button>
-    </div>
-  </aside>
-
-  <!-- Product Quick View Modal -->
+  <!-- Product Monograph & Medicine Profile Modal -->
   <div class="modal-overlay" id="quick-view-overlay"></div>
   <div class="modal-dialog product-modal" id="quick-view-modal">
-    <button class="close-modal-btn" id="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+    <button class="close-modal-btn" id="close-modal-btn" aria-label="Close Monograph"><i class="fa-solid fa-xmark"></i></button>
     <div class="product-modal-content" id="quick-view-body">
       <!-- Dynamically injected -->
     </div>
   </div>
 
-  <!-- Interactive Skin Quiz Modal -->
-  <div class="modal-overlay" id="quiz-overlay"></div>
-  <div class="modal-dialog quiz-modal" id="quiz-modal">
-    <button class="close-modal-btn" id="close-quiz-modal-btn"><i class="fa-solid fa-xmark"></i></button>
-    <div class="quiz-modal-body" id="quiz-modal-body">
-      <!-- Injected dynamically -->
+  <!-- Doctor & Trade Inquiry Modal -->
+  <div class="modal-overlay" id="inquiry-overlay"></div>
+  <div class="modal-dialog quiz-modal" id="inquiry-modal">
+    <button class="close-modal-btn" id="close-inquiry-modal-btn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <div class="quiz-modal-body" style="padding: 42px;">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <div style="width: 56px; height: 56px; border-radius: 16px; background: rgba(212, 175, 55, 0.15); color: var(--gold-dark); display: inline-flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 12px;">
+          <i class="fa-solid fa-envelope-open-text"></i>
+        </div>
+        <h3 class="quiz-step-title" style="margin-bottom: 6px;">Doctor, Clinic & Trade Inquiry</h3>
+        <p style="color: var(--slate-muted); font-size: 0.95rem;">Connect directly with the manufacturing desk at Mellkderma Skincare Private Limited.</p>
+      </div>
+
+      <form id="inquiry-form">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+          <div>
+            <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--slate-dark); margin-bottom: 6px;">Your Name *</label>
+            <input type="text" id="inq-name" placeholder="Dr. / Mr. / Ms." required style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-light); border-radius: 8px;">
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--slate-dark); margin-bottom: 6px;">Professional Role *</label>
+            <select id="inq-role" required style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-light); border-radius: 8px; background: #fff;">
+              <option value="Dermatologist / Physician">Dermatologist / Physician</option>
+              <option value="Clinic / Hospital Admin">Clinic / Hospital Admin</option>
+              <option value="Pharmacy / Chemist">Pharmacy / Chemist</option>
+              <option value="Pharma Stockist / Distributor">Pharma Stockist / Distributor</option>
+              <option value="Other Medical Professional">Other Medical Professional</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+          <div>
+            <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--slate-dark); margin-bottom: 6px;">Clinic / Organization / Hospital *</label>
+            <input type="text" id="inq-org" placeholder="e.g. Apollo Skin Care, Delhi" required style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-light); border-radius: 8px;">
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--slate-dark); margin-bottom: 6px;">Contact Phone / Mobile *</label>
+            <input type="tel" id="inq-phone" placeholder="+91 98765 43210" required style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-light); border-radius: 8px;">
+          </div>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--slate-dark); margin-bottom: 6px;">Formulation of Interest</label>
+          <select id="inquiry-medicine" style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-light); border-radius: 8px; background: #fff;">
+            <option value="">All Mellkderma Formulations (Complete Formulary)</option>
+            <option value="skinoshell-spray">Mellkderma Skinoshell Spray Sunscreen SPF50 (100ml)</option>
+            <option value="hskinoshell-max">Mellkderma Hskinoshell Max Sunscreen SPF50 (50g)</option>
+            <option value="vitamin-c-serum">Mellkderma Vitamin C Serum 3-O-Ethyl (30ml)</option>
+            <option value="brightening-complex-day">Mellkderma Brightening Complex Day Cream (50g)</option>
+            <option value="moisturizer-acne">Mellkderma Moisturizer for Acne Prone Skin (50g)</option>
+            <option value="liposomal-serum">Mellkderma Liposomal Serum (30ml)</option>
+            <option value="night-care">Mellkderma Night Care Retinol & Matrixyl (50g)</option>
+            <option value="moisturizer-dry">Mellkderma Moisturizer Dry Skin Dryomin P (200ml)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-gold btn-block btn-lg" style="width: 100%;">
+          <i class="fa-solid fa-paper-plane"></i> Submit Official Doctor / Trade Inquiry
+        </button>
+      </form>
     </div>
   </div>
 
-  <!-- Checkout Flow Modal -->
-  <div class="modal-overlay" id="checkout-overlay"></div>
-  <div class="modal-dialog checkout-modal" id="checkout-modal">
-    <button class="close-modal-btn" id="close-checkout-modal-btn"><i class="fa-solid fa-xmark"></i></button>
-    <div class="checkout-modal-body" id="checkout-body">
-      <!-- Injected dynamically -->
-    </div>
-  </div>
-
-  <!-- Policy & Support Info Modal -->
+  <!-- Policy & Information Modal -->
   <div class="modal-overlay" id="policy-overlay"></div>
   <div class="modal-dialog quiz-modal" id="policy-modal">
-    <button class="close-modal-btn" id="close-policy-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+    <button class="close-modal-btn" id="close-policy-modal-btn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
     <div class="quiz-modal-body" id="policy-modal-body">
       <!-- Injected dynamically -->
     </div>
   </div>
-
-  <!-- Floating WhatsApp Dermatologist Support Button -->
-  <a href="#" class="whatsapp-float-btn" onclick="openPolicyModal('consultation'); return false;" title="Ask a Mellkderma Expert">
-    <i class="fa-brands fa-whatsapp"></i>
-    <span>Derm Expert</span>
-  </a>
 
   <!-- Notification Toast Container -->
   <div class="toast-container" id="toast-container"></div>

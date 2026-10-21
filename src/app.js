@@ -1,226 +1,378 @@
-// --- MELLKDERMA STANDALONE DATA & APP ENGINE ---
-// Works on both file:// (double-clicking index.html) & http:// servers
+// --- MELLKDERMA OFFICIAL PHARMACEUTICAL & DERMATOLOGY DATA ENGINE ---
+// Exact Product Catalogue Data extracted from "Mellkderma Product Catalogue-4_261009_141014.pdf"
+// Mellkderma Skincare Private Limited
 
 const PRODUCTS = [
   {
-    id: "skinoshell-spray",
-    name: "Mellkderma Skinoshell Spray Sunscreen SPF50",
-    subname: "Broad Spectrum UVA/UVB & HEV Protection",
-    price: 1599,
-    originalPrice: 1999,
-    rating: 4.9,
-    reviewsCount: 142,
-    category: "Sun Care",
-    skinType: "All Skin Types / Sensitive",
-    concern: "Sun Protection & HEV Blue Light",
-    activeIngredients: ["SUNCAT DE 15%", "UVINUL A PLUS", "OCTOCRYLENE"],
-    description: "Advanced spray-on broad-spectrum sunscreen that provides maximum protection against UVA/UVB rays and High Energy Visible (HEV) blue light. Formulated with Defend & Nourish technology.",
-    usage: "Shake well before use. Spray liberally 15 minutes before sun exposure onto face and body. Reapply every 2 hours or after swimming/sweating.",
-    volume: "100ml / 3.38 FL OZ",
-    image: "public/images/products/skinoshell_spray.png",
-    badge: "SPF 50 PA+++",
-    featured: true
-  },
-  {
-    id: "hskinoshell-max",
-    name: "Mellkderma Hskinoshell Max Sunscreen SPF50",
-    subname: "Ultra Matte Defend & Nourish Formula",
-    price: 1220,
-    originalPrice: 1500,
-    rating: 4.8,
-    reviewsCount: 98,
-    category: "Sun Care",
-    skinType: "Combination & Oily Skin",
-    concern: "Sun Protection & Photo-Aging",
-    activeIngredients: ["OMC", "UVINUL A PLUS", "Titanium Dioxide", "Vitamin E"],
-    description: "Ultra-light matte sunscreen gel-cream delivering broad-spectrum SPF 50 PA+++. Infused with antioxidant Vitamin E to defend against urban pollution and sun spots.",
-    usage: "Apply evenly to clean face and neck 15 minutes before stepping outdoors. Non-greasy finish makes it an ideal base for makeup.",
-    volume: "50g",
-    image: "public/images/products/hskinoshell_max.png",
-    badge: "Ultra Matte SPF 50",
-    featured: true
-  },
-  {
     id: "vitamin-c-serum",
     name: "Mellkderma Vitamin C Serum",
-    subname: "Mw Azeglemq V-C Brightening & Depigmenting",
+    subname: "Mw Azeglemq V-C Serum • Brightening & Depigmenting",
     price: 2499,
-    originalPrice: 2999,
-    rating: 4.95,
-    reviewsCount: 215,
     category: "Serums",
-    skinType: "All Skin Types",
-    concern: "Dullness & Hyperpigmentation",
-    activeIngredients: ["3-O-Ethyl Ascorbic Acid", "Aquaxyl", "Hyaluronic Acid"],
-    description: "Potent brightening and depigmenting serum containing stable 3-O-Ethyl Ascorbic Acid paired with multi-depth hydration boosters to restore youthful luminosity.",
-    usage: "Apply 3-4 drops morning and night on cleansed skin before moisturizers. Follow with sunscreen during daytime.",
-    volume: "30ml / 1.01 FL OZ",
+    skinType: "All Skin Types, Sensitive & Post-Procedure Skin",
+    concern: "Uneven Skin Tone, Dullness, Pigmentation & Dermal Barrier",
+    dosageForm: "Multifunctional Active Serum",
+    volume: "30ml (1.01 FL. OZ.)",
+    badge: "Paraben Free • Mineral Oil Free",
+    cataloguePage: 4,
+    description: "A cutting-edge, multifunctional serum formulated to address uneven skin tone, dullness, and pigmentation texture. This serum combines advanced brightening agents with potent hydrators to restore clarity and luminosity while reinforcing the skin's barrier and moisture balance.",
+    formulatedWith: [
+      {
+        ingredient: "3-O-Ethyl Ascorbic Acid (Most Stable Version of Vitamin C)",
+        details: "Helps brighten skin tone, gives a radiant glow, fades hyperpigmentation, powerful antioxidant protection, and acts as an anti-ageing wonder with protection against UV-induced immunosuppression."
+      },
+      {
+        ingredient: "Aquaxyl™",
+        details: "A patented complex of natural sugars which provides immediate moisturization after one single application and long-term restructuring effects."
+      },
+      {
+        ingredient: "Hyaluronic Acid",
+        details: "Intensely hydrates and plumps skin from the surface to deeper layers. Helps maintain skin elasticity, smoothness, and provides an optimal base for active absorption."
+      }
+    ],
+    dermatologicalBenefits: [
+      "Visibly reduces dark spots and discolouration",
+      "Enhances overall skin brightness and clarity",
+      "Deeply hydrates and supports the skin barrier",
+      "Suitable for all skin types, including sensitive & post-procedure skin",
+      "Paraben Free • Hypoallergenic • Mineral Oil Free"
+    ],
+    usage: "Dispense 3-4 drops on cleansed skin morning and evening. Gently press into face and neck before applying moisturizers. Follow with daily broad-spectrum sun protection.",
+    storage: "Store below 25°C in a cool, dry place away from direct sunlight.",
+    caution: "For external dermatological use only. Avoid contact with eyes. As directed by Physician/Dermatologist.",
     image: "public/images/products/vitamin_c_serum.png",
-    badge: "Bestseller Glow",
+    featured: true
+  },
+  {
+    id: "night-care",
+    name: "Mellkderma Night Care",
+    subname: "Mw Azeglemq Night Care • Anti-Wrinkle, Lifting & Firming Night Cream",
+    price: 3200,
+    category: "Anti-Aging",
+    skinType: "Mature, Aging, Lax & Fine-Lined Skin",
+    concern: "Fine Lines, Deep Wrinkles, Loss of Firmness & Skin Laxity",
+    dosageForm: "Advanced Nighttime Cellular Renewal Formula",
+    volume: "50g (1.76 OZ.)",
+    badge: "Encapsulated Retinol • Matrixyl 3000",
+    cataloguePage: 5,
+    description: "A high-performance night cream specially formulated to address signs of aging, including fine lines, wrinkles, loss of firmness, and skin laxity. This powerful yet gentle formulation combines time-released encapsulated retinol with advanced biomimetic peptides to stimulate collagen production, visibly smooth skin, and restore youthful contour while minimizing irritation.",
+    formulatedWith: [
+      {
+        ingredient: "Encapsulated Retinol (Stabilized, Time-Release Technology)",
+        details: "Promotes epidermal cell turnover, smoothing rough texture and uneven tone. Stimulates dermal collagen synthesis, reducing the appearance of fine lines. Time-release encapsulation minimizes dryness, peeling, and redness without barrier disruption."
+      },
+      {
+        ingredient: "Matrixyl 3000 (Palmitoyl Tripeptide-1 & Palmitoyl Tetrapeptide-7)",
+        details: "Mimics natural skin repair messengers to rebuild the dermal matrix. Enhances skin elasticity and density over sustained use. Supports extracellular matrix (ECM) remodelling and visible skin thickening."
+      },
+      {
+        ingredient: "Argireline Peptide Solution C (Acetyl Hexapeptide-8)",
+        details: "Botox-like action that softens expression lines, especially around the eyes and forehead. Helps prevent the formation of new wrinkles with long-term use. Safe, non-invasive alternative to injectables."
+      }
+    ],
+    dermatologicalBenefits: [
+      "Visibly reduces fine lines, deep wrinkles and crow's feet",
+      "Restores structural dermal density, skin elasticity and firmness",
+      "Improves clarity and boosts overnight skin renewal without barrier peeling",
+      "Time-released delivery ensures maximum clinical tolerance"
+    ],
+    usage: "Apply at night to cleansed face and neck. Smooth gently until absorbed. Begin with alternate-night application for the initial 2 weeks, then advance to nightly use.",
+    storage: "Store in a cool, dark place below 25°C. Keep jar tightly closed.",
+    caution: "For nocturnal topical application only. Daytime broad-spectrum sunscreen use is mandatory during retinol regimens. Not recommended for pregnant women.",
+    image: "public/images/products/night_care.png",
     featured: true
   },
   {
     id: "brightening-complex-day",
     name: "Mellkderma Brightening Complex SPF 15+ Day Cream",
-    subname: "Mw Azeglemq Eday Brightening Complex",
+    subname: "Mw Azeglemq Eday • Brightening Complex SPF-15+",
     price: 3200,
-    originalPrice: 3800,
-    rating: 4.9,
-    reviewsCount: 178,
     category: "Day Creams",
-    skinType: "Normal to Dry Skin",
-    concern: "Uneven Tone & Dark Spots",
-    activeIngredients: ["Oler Blend-II (Japan)", "Hyaluronic Acid", "Vitamin-C"],
-    description: "Clinical day complex formulated with Japanese bio-tech Oler Blend-II. Fades persistent pigmentation while offering daily SPF 15+ environmental defense.",
-    usage: "Smooth over face and neck every morning as the final step of your skincare routine.",
-    volume: "50g / 1.76 OZ",
+    skinType: "Normal to Dry, Melasma & Hyperpigmented Skin",
+    concern: "Multimodal Depigmenting, Photo-Aging & Oxidative Protection",
+    dosageForm: "Protective Day Cream with SPF 15",
+    volume: "50g (1.76 OZ.)",
+    badge: "Clair Blanche III™ (Japan)",
+    cataloguePage: 6,
+    description: "A scientifically advanced day cream combining multimodal brightening agents, photo-protection, and intense hydration. Formulated with Clair Blanche III™, a patented Japanese depigmenting complex, paired with stabilized vitamin C (3-O-Ethyl Ascorbic Acid) and hyaluronic acid to provide round-the-clock correction and protection.",
+    formulatedWith: [
+      {
+        ingredient: "Clair Blanche III™ (Patented Japanese Brightening Complex)",
+        details: "A clinically tested depigmenting system composed of multiple synergistic actives that target melanogenesis at several levels: reduces pigmentation intensity and spot size, inhibits tyrosinase and peroxidase enzymes involved in melanin production, and blocks melanosome maturation and transfer."
+      },
+      {
+        ingredient: "3-O-Ethyl Ascorbic Acid",
+        details: "Offers high penetration and oxidative stability. Blocks melanin synthesis at the cellular level, restoring daytime skin luminosity."
+      },
+      {
+        ingredient: "Hyaluronic Acid",
+        details: "Binds water at multiple layers of the skin for long-lasting hydration, enhancing skin plumpness, softness, and moisture cushion."
+      },
+      {
+        ingredient: "Broad-Spectrum UV Protection (SPF 15)",
+        details: "Guards against UVA and UVB-induced pigmentation flare-ups, preventing photo-aging, solar lentigines, and environmental oxidative damage."
+      }
+    ],
+    dermatologicalBenefits: [
+      "Depigmenting, protective and deeply hydrating multifunctional action",
+      "Clair Blanche III™ Japanese bio-tech actively blocks melanosome transfer",
+      "Built-in SPF 15 shields against UV-induced pigmentation rebound",
+      "Delivers intense multi-layer epidermal hydration throughout the day"
+    ],
+    usage: "Apply evenly every morning to cleansed face and neck as part of the daily morning regimen. Ideal under makeup.",
+    storage: "Store in a cool, dry place away from direct heat and light.",
+    caution: "For external dermatological use only. Hypoallergenic formula.",
     image: "public/images/products/brightening_complex_day.png",
-    badge: "Japanese Bio-Tech",
     featured: true
   },
   {
-    id: "moisturizer-acne",
-    name: "Mellkderma Moisturizer for Acne Prone Skin",
-    subname: "Osebderm Hydra Ultra Moisturizing",
-    price: 1112,
-    originalPrice: 1350,
-    rating: 4.85,
-    reviewsCount: 164,
-    category: "Moisturizers",
-    skinType: "Acne-Prone & Oily Skin",
-    concern: "Acne Breakouts & Sebum Control",
-    activeIngredients: ["Hyaluronic Acid", "Pentavitin", "SPF 15"],
-    description: "Non-comedogenic oil-free moisturizer formulated specifically for acne-prone skin. Strengthens barrier function with 72-hour moisture lock Pentavitin.",
-    usage: "Apply twice daily after cleansing. Gently massage until fully absorbed.",
-    volume: "50g / 1.76 OZ",
-    image: "public/images/products/moisturizer_acne.png",
-    badge: "Non-Comedogenic",
-    featured: false
-  },
-  {
-    id: "liposomal-serum",
-    name: "Mellkderma Liposomal Serum",
-    subname: "Mw Azeglemq Depigmenting Serum",
-    price: 2499,
-    originalPrice: 3100,
-    rating: 4.92,
-    reviewsCount: 189,
-    category: "Serums",
-    skinType: "Hyperpigmented & Sensitive Skin",
-    concern: "Melasma & Deep Pigmentation",
-    activeIngredients: ["Encapsulated Liposomes", "Depigmenting Actives", "Hyaluronic Acid"],
-    description: "Advanced micro-encapsulated liposomal delivery system targeting deep dermal pigment cells. Reduces stubborn dark spots without causing surface irritation.",
-    usage: "Dispense 2-3 drops directly onto dark spots or entire face. Use twice daily.",
-    volume: "30ml / 1.01 FL OZ",
-    image: "public/images/products/liposomal_serum.png",
-    badge: "Advanced Liposomal",
-    featured: false
-  },
-  {
-    id: "night-care",
-    name: "Mellkderma Night Care",
-    subname: "Mw Azeglemq Anti-Wrinkle, Lifting & Firming",
-    price: 3200,
-    originalPrice: 4000,
-    rating: 4.98,
-    reviewsCount: 230,
-    category: "Anti-Aging",
-    skinType: "Mature & Aging Skin",
-    concern: "Fine Lines, Wrinkles & Sagging",
-    activeIngredients: ["Encapsulated Retinol", "Matrixyl 3000", "Argireline Peptide C"],
-    description: "Luxury nocturnal repair treatment featuring encapsulated retinol and clinical peptides to visibly lift, firm, and diminish fine lines while you sleep.",
-    usage: "Apply at night to face and neck after cleansing. Use 2-3 times per week initially, building to nightly use.",
-    volume: "50g / 1.76 OZ",
-    image: "public/images/products/night_care.png",
-    badge: "Retinol & Peptides",
+    id: "skinoshell-spray",
+    name: "Mellkderma Sunscreen Spray SPF 50",
+    subname: "Skinoshell Spray Sunscreen SPF50 • Defend & Nourish Formula",
+    price: 1599,
+    category: "Sun Care",
+    skinType: "All Skin Types, Sensitive & Pediatric Skin",
+    concern: "Broad-Spectrum UVA/UVB & HEV High Energy Visible Light Defense",
+    dosageForm: "Water-Light Non-Greasy Spray Mist",
+    volume: "100ml (3.38 FL. OZ.)",
+    badge: "SUNCAT DE 15% • SPF 50 PA+++",
+    cataloguePage: 7,
+    description: "A clinically formulated, water-light sunscreen spray offering broad-spectrum protection against harmful UVA and UVB rays. This fast-absorbing, non-greasy mist is powered by next-generation photostable UV filters, making it ideal for both everyday use and outdoor exposure. Enhanced with SUNCAT DE™, this sunscreen provides immediate and sustained photoprotection.",
+    formulatedWith: [
+      {
+        ingredient: "SUNCAT DE™ (Encapsulated UV Filter System)",
+        details: "A patented delivery system combining both chemical and physical UV filters. Encapsulation enhances photostability, reduces irritation, and improves absorption while providing long-lasting protection with reduced need for frequent reapplications."
+      },
+      {
+        ingredient: "Uvinul® A Plus (Diethylamino Hydroxybenzoyl Hexyl Benzoate)",
+        details: "Protects against long-wave UVA rays (up to 400 nm) which cause deep cellular skin aging. Prevents collagen degradation, solar pigmentation, and oxidative damage. Safe and well-tolerated, suitable for sensitive skin."
+      },
+      {
+        ingredient: "Octocrylene",
+        details: "Broad-spectrum UVB absorber that enhances SPF performance. Adds water resistance and increases product longevity during active outdoor movement."
+      }
+    ],
+    dermatologicalBenefits: [
+      "Broad-spectrum UVA/UVB & HEV High Energy Visible light protection",
+      "Ultra-lightweight spray form with rapid absorption and zero white residue",
+      "SUNCAT DE™ micro-encapsulated technology prevents chemical filter direct skin penetration",
+      "Water-resistant and photostable defense suitable for face and body"
+    ],
+    usage: "Shake well before use. Spray liberally from a distance of 15 cm onto exposed skin 15 minutes before sun exposure. Reapply every 2 hours or post swimming/sweating.",
+    storage: "Store below 25°C in a dry place. Protect from heat and direct sunlight.",
+    caution: "For external dermatological use only. Do not spray directly into eyes.",
+    image: "public/images/products/skinoshell_spray.png",
     featured: true
   },
   {
     id: "moisturizer-dry",
     name: "Mellkderma Moisturizer for Dry Skin",
-    subname: "Dryomin P Intensive Creme 48 HR Hydration",
+    subname: "Dryomin P Intensive Creme • 48 HR Continuous Hydration",
     price: 590,
-    originalPrice: 750,
-    rating: 4.88,
-    reviewsCount: 310,
     category: "Moisturizers",
-    skinType: "Dry to Extra Dry Skin",
-    concern: "Extreme Dryness & Barrier Repair",
-    activeIngredients: ["Aquaxyl", "Shea Butter", "Olive Oil"],
-    description: "Ultra-nourishing intensive cream providing guaranteed 48-hour continuous hydration. Fragrance-free formula ideal for sensitive and eczema-prone skin.",
-    usage: "Apply generously over dry patches, face, and body as needed throughout the day.",
-    volume: "200ml / 6.76 FL OZ",
+    skinType: "Dry, Extremely Dry, Flaky, Sensitive & Atopic Skin",
+    concern: "Severe Xerosis, Transepidermal Water Loss (TEWL) & Barrier Breakdown",
+    dosageForm: "Rich Ultra-Nourishing Barrier Cream",
+    volume: "200ml (6.76 FL. OZ.)",
+    badge: "48 HR Hydration • Aquaxyl™",
+    cataloguePage: 8,
+    description: "Give your skin the care it deserves with Mellkderma Dryomin P intensive cream - a dermatologically advanced moisturizer formulated to deliver up to 48 hours of continuous hydration. Powered by Aquaxyl™, shea butter, and olive oil, this rich cream deeply nourishes, soothes, and restores the skin barrier, leaving your skin visibly soft, smooth, and healthy.",
+    formulatedWith: [
+      {
+        ingredient: "Aquaxyl™",
+        details: "A cutting-edge hydration booster that optimizes the skin's water reserves. Reinforces the skin's natural barrier function to dramatically reduce transepidermal water loss (TEWL)."
+      },
+      {
+        ingredient: "Shea Butter",
+        details: "A luxurious emollient rich in essential fatty acids and vitamins A, E, and F. Deeply hydrates, softens, and soothes dry, irritated, or flaky epidermal skin."
+      },
+      {
+        ingredient: "Olive Oil Extract",
+        details: "Rich in squalene and natural polyphenols, providing lasting lipid nourishment. Helps strengthen the skin's lipid matrix for long-term moisture retention."
+      }
+    ],
+    dermatologicalBenefits: [
+      "Deep nourishment, lasting comfort, and advanced continuous 48-hour hydration",
+      "Restores compromised epidermal barrier and prevents moisture evaporation",
+      "Fragrance Free • Paraben Free • Hypoallergenic • Non-Comedogenic",
+      "Suitable for all skin types including pediatric, atopic, and sensitive dry skin"
+    ],
+    usage: "Apply generously to dry areas of face and body as often as required, especially after bathing or cleansing to seal in hydration.",
+    storage: "Store below 25°C. Keep dispenser nozzle clean.",
+    caution: "For external dermatological use only. Hypoallergenic, fragrance-free formula.",
     image: "public/images/products/moisturizer_dry.png",
-    badge: "48 HR Hydration",
+    featured: true
+  },
+  {
+    id: "liposomal-serum",
+    name: "Mellkderma Liposomal Serum",
+    subname: "Mw Azeglemq Liposomal Serum • Targeted Depigmenting Concentrate",
+    price: 2499,
+    category: "Serums",
+    skinType: "Melasma, Post-Inflammatory Hyperpigmentation (PIH) & Sensitive Skin",
+    concern: "Resistant Epidermal & Dermal Melasma, PIH & Stubborn Dark Spots",
+    dosageForm: "High-Efficacy Liposome-Encapsulated Serum",
+    volume: "30ml (1.01 FL. OZ.)",
+    badge: "Liposomal Azelaic • 4-Butylresorcinol",
+    cataloguePage: 9,
+    description: "A high-efficacy depigmenting serum formulated with liposome-encapsulated actives to deliver powerful pigment-reducing agents deep into the skin with minimal irritation. This next-generation formulation combines liposomal azelaic acid, known for its anti-inflammatory and tyrosinase-inhibiting properties, with 4-butylresorcinol, a gold-standard brightening agent clinically proven to reduce stubborn pigmentation.",
+    formulatedWith: [
+      {
+        ingredient: "Liposomal Azelaic Acid (Encapsulated Form)",
+        details: "Reduces melanin production by inhibiting tyrosinase and mitochondrial enzymes. Encapsulation improves skin penetration, bioavailability, and tolerability while fighting inflammation in pigment-prone skin (e.g. acne, rosacea-related PIH)."
+      },
+      {
+        ingredient: "4-Butylresorcinol",
+        details: "One of the most potent tyrosinase inhibitors available for topical use. Clinically shown to be superior to kojic acid, hydroquinone, and arbutin in clinical studies. Targets deep epidermal and dermal pigmentation including resistant melasma."
+      },
+      {
+        ingredient: "Liposomal Delivery System",
+        details: "Enhances dermal delivery of actives without disrupting the barrier. Allows for sustained, controlled release. Improves skin compatibility and reduces surface irritation, supporting better treatment adherence with minimal stinging or redness."
+      }
+    ],
+    dermatologicalBenefits: [
+      "Superior tyrosinase inhibition targeting recalcitrant melasma and dermal pigmentation",
+      "Liposomal micro-encapsulation eliminates burning, redness, and peeling",
+      "Ideal for melasma, post-inflammatory hyperpigmentation (PIH), and post-acne dark marks",
+      "Highly recommended in combination with in-clinic dermatological procedures"
+    ],
+    usage: "Apply 2-3 drops directly onto areas of hyperpigmentation or full face twice daily after cleansing. Gently massage until absorbed.",
+    storage: "Store in a cool, dry place between 15°C and 25°C. Avoid exposure to light.",
+    caution: "For external dermatological use only. Formulated for clinical physician recommendation.",
+    image: "public/images/products/liposomal_serum.png",
+    featured: false
+  },
+  {
+    id: "moisturizer-acne",
+    name: "Mellkderma Moisturizer for Acne Prone Skin",
+    subname: "Csebderm Hydra Moisturizer • Ultra Moisturizing Acne-Prone Skin SPF 15",
+    price: 1112,
+    category: "Moisturizers",
+    skinType: "Acne-Prone, Oily, Sensitized & Retinoid-Treated Skin",
+    concern: "Acne Dehydration, Barrier Recovery & 72-Hour Sebum Balance",
+    dosageForm: "Oil-Free Lightweight Barrier Support Cream with SPF 15",
+    volume: "50g (1.76 OZ.)",
+    badge: "Pentavitin® (72H) • Hyaluronic Acid",
+    cataloguePage: 10,
+    description: "A lightweight, non-greasy moisturizer specifically formulated for acne-prone, oily, and sensitized skin. This barrier-support formulation combines multi-molecular weight hyaluronic acid with Pentavitin® (Saccharide Isomerate), a clinically proven sugar-based humectant that delivers 72-hour moisture retention. Designed to maintain optimal skin hydration without clogging pores or triggering breakouts.",
+    formulatedWith: [
+      {
+        ingredient: "Hyaluronic Acid (Multi-Molecular Weight)",
+        details: "Delivers deep and surface-level hydration. Helps soothe flaking or dryness caused by acne treatments (e.g., retinoids, benzoyl peroxide). Supports wound healing and skin barrier repair, especially post-acne, instantly plumping without adding oil."
+      },
+      {
+        ingredient: "Pentavitin® (Saccharide Isomerate)",
+        details: "A 100% natural plant-derived humectant that binds to the skin like a magnet. Reinforces the skin barrier and improves moisture retention for up to 72 hours. Reduces tightness, itchiness, and sensitivity in dehydrated or compromised acne skin."
+      },
+      {
+        ingredient: "Broad-Spectrum SPF 15",
+        details: "Shields sensitized acne skin from UV-aggravated post-inflammatory hyperpigmentation (PIH) and solar erythema."
+      }
+    ],
+    dermatologicalBenefits: [
+      "100% Oil-Free, non-comedogenic formulation that will not clog pores",
+      "Pentavitin® creates a 72-hour moisture reservoir to counter retinoid peeling",
+      "Soothes erythema, flaking, and inflammation associated with active acne lesions",
+      "Hydrating, skin barrier support with built-in daily SPF 15 photoprotection"
+    ],
+    usage: "Smooth a thin, even layer across cleansed skin twice daily. Suitable during medical anti-acne therapy.",
+    storage: "Store below 30°C in a dry place. Keep tube capped.",
+    caution: "For external dermatological use only. Non-comedogenic.",
+    image: "public/images/products/moisturizer_acne.png",
+    featured: false
+  },
+  {
+    id: "hskinoshell-max",
+    name: "Mellkderma Hskinoshell Max Sunscreen SPF50",
+    subname: "Hskinoshell Max Sunscreen SPF50 • Defend & Nourish Formula",
+    price: 1220,
+    category: "Sun Care",
+    skinType: "Combination, Oily, Sensitive & Photo-Aging Prone Skin",
+    concern: "UVA/UVB Broad-Spectrum Protection & HEV Device Light Shielding",
+    dosageForm: "Matte Ultra-Defense Gel-Cream",
+    volume: "50g (1.76 OZ.)",
+    badge: "OMC • Uvinul A Plus • Titanium Dioxide",
+    cataloguePage: 11,
+    description: "Mellkderma Hskinoshell Max Sunscreen SPF50 is expertly formulated to provide broad-spectrum protection against environmental aggressors like UV rays and high-energy visible (HEV) light from devices. Powered by OMC, Uvinul A Plus, Titanium Dioxide, and Vitamin E, this powerful yet gentle sunscreen not only shields your skin from sun damage but also delivers essential nourishment to maintain a healthy, radiant complexion.",
+    formulatedWith: [
+      {
+        ingredient: "OMC (Octyl Methoxycinnamate)",
+        details: "Provides effective protection against UVB rays, preventing sunburn and surface epidermal skin damage."
+      },
+      {
+        ingredient: "Uvinul® A Plus",
+        details: "Shields against long UVA rays that cause premature aging, helping maintain structural skin firmness and elasticity."
+      },
+      {
+        ingredient: "Titanium Dioxide (Physical Mineral Shield)",
+        details: "Reflects both UVA and UVB rays for physical broad-spectrum protection. Gentle on sensitive skin and suitable for daily clinical use."
+      },
+      {
+        ingredient: "Vitamin E (Tocopheryl Acetate)",
+        details: "Acts as a powerful antioxidant to fight free radicals, soothes and nourishes skin, and reduces UV-induced inflammation and dryness."
+      }
+    ],
+    dermatologicalBenefits: [
+      "Broad-Spectrum UVA/UVB Protection with SPF 50 PA+++ certification",
+      "Defends against High Energy Visible (HEV) blue light from digital devices",
+      "Non-greasy, elegant matte finish suitable for humid climates and oily skin",
+      "Vitamin E antioxidant infusion protects against environmental ROS generation"
+    ],
+    usage: "Apply uniformly over face and neck 15 minutes before stepping outdoors. Reapply every 2 hours during continuous sun exposure.",
+    storage: "Store in a cool and dry place away from heat and light.",
+    caution: "For external dermatological application only. Dermatologist tested.",
+    image: "public/images/products/hskinoshell_max.png",
     featured: true
   }
 ];
 
 const CLINICAL_INGREDIENTS = [
   {
-    name: "SUNCAT DE 15%",
-    role: "Encapsulated Sun Filters",
-    description: "Delivers non-irritating, long-lasting broad-spectrum UVA & UVB shielding with zero white cast."
+    name: "SUNCAT DE™ (Encapsulated Matrix)",
+    role: "Photostable Broad-Spectrum Shield",
+    description: "Patented micro-encapsulation combining physical and chemical UV filters that remain on the skin surface, eliminating systemic chemical absorption while ensuring prolonged UVA/UVB/HEV defense."
   },
   {
-    name: "Matrixyl 3000",
-    role: "Peptide Complex",
-    description: "Stimulates collagen synthesis and extracellular matrix repair to visibly reverse deep facial wrinkles."
+    name: "Clair Blanche III™ (Japan)",
+    role: "Multimodal Melanosome Down-Regulator",
+    description: "Biotechnological brightening complex formulated in Japan that inhibits tyrosinase and peroxidase enzymes, actively blocking melanosome maturation and transfer in persistent melasma."
   },
   {
-    name: "3-O-Ethyl Ascorbic Acid",
-    role: "Next-Gen Vitamin C",
-    description: "Highly stable derivative that penetrates deep into dermal layers to inhibit melanin and hyperpigmentation."
+    name: "Matrixyl 3000 & Argireline® C",
+    role: "Extracellular Matrix Remodelling Peptides",
+    description: "Dual Matrikine peptide complex (Pal-GHK & Pal-GQPR) paired with neuromuscular Argireline C to stimulate collagen synthesis, restore dermal density, and visibly soften expression lines."
   },
   {
-    name: "Aquaxyl & Pentavitin",
-    role: "3D Hydration Matrix",
-    description: "Locks moisture into deep skin layers for up to 72 hours while repairing the natural lipid barrier."
-  },
-  {
-    name: "Encapsulated Retinol",
-    role: "Cellular Renewal",
-    description: "Time-released retinol that accelerates skin turnover with minimal redness or peeling."
+    name: "Pentavitin® & Aquaxyl™",
+    role: "Biomimetic 72-Hour Moisture Magnet",
+    description: "100% plant-derived carbohydrate fractions that bond irreversibly with stratum corneum keratin, creating an enduring epidermal moisture reservoir for severe xerosis and post-retinoid peeling."
   }
 ];
 
-// Global State
-let state = {
+// State Management
+const state = {
   products: PRODUCTS,
   filteredProducts: PRODUCTS,
-  cart: JSON.parse(localStorage.getItem('mellkderma_cart') || '[]'),
-  wishlist: JSON.parse(localStorage.getItem('mellkderma_wishlist') || '[]'),
-  theme: localStorage.getItem('mellkderma_theme') || 'rose-gold',
   category: 'All',
   concern: 'All',
   sort: 'featured',
   searchQuery: '',
-  appliedCoupon: null,
-  quizAnswers: { skinType: '', concern: '' }
+  theme: localStorage.getItem('mellkderma_theme') || 'rose-gold'
 };
 
 // DOM Selectors
 let productGrid, categoryTabs, concernSelect, sortSelect, globalSearchInput, scienceGrid, themeSelector;
-let cartDrawer, cartOverlay, openCartBtn, closeCartBtn, cartItemsBody, cartCount, cartItemCount;
-let cartSubtotal, cartDiscount, discountRow, cartShipping, cartGrandTotal, shippingMsg, shippingProgress;
-let couponInput, applyCouponBtn, couponTag, removeCouponBtn, checkoutBtn;
-let wishlistCount, openWishlistBtn;
 let quickViewOverlay, quickViewModal, quickViewBody, closeModalBtn;
-let quizOverlay, quizModal, quizModalBody, openQuizModalBtn, startQuizBtn, closeQuizModalBtn;
-let checkoutOverlay, checkoutModal, checkoutBody, closeCheckoutModalBtn;
 let policyOverlay, policyModal, policyModalBody, closePolicyModalBtn;
-let newsletterForm, newsletterEmail;
+let inquiryOverlay, inquiryModal, closeInquiryModalBtn, inquiryForm;
 let mobileToggleBtn, navMenu;
 
-// --- Initialization ---
+// Initialization
 document.addEventListener('DOMContentLoaded', () => {
   initDOM();
   initTheme();
-  renderProducts();
-  renderRegimen('am');
+  renderProductsGrid(state.filteredProducts);
   renderScience();
-  updateCartUI();
-  updateWishlistUI();
   setupEventListeners();
 });
 
@@ -233,59 +385,26 @@ function initDOM() {
   scienceGrid = document.getElementById('science-grid');
   themeSelector = document.getElementById('theme-selector');
 
-  cartDrawer = document.getElementById('cart-drawer');
-  cartOverlay = document.getElementById('cart-overlay');
-  openCartBtn = document.getElementById('open-cart-btn');
-  closeCartBtn = document.getElementById('close-cart-btn');
-  cartItemsBody = document.getElementById('cart-items-body');
-  cartCount = document.getElementById('cart-count');
-  cartItemCount = document.getElementById('cart-item-count');
-  cartSubtotal = document.getElementById('cart-subtotal');
-  cartDiscount = document.getElementById('cart-discount');
-  discountRow = document.getElementById('discount-row');
-  cartShipping = document.getElementById('cart-shipping');
-  cartGrandTotal = document.getElementById('cart-grand-total');
-  shippingMsg = document.getElementById('shipping-msg');
-  shippingProgress = document.getElementById('shipping-progress');
-  couponInput = document.getElementById('coupon-input');
-  applyCouponBtn = document.getElementById('apply-coupon-btn');
-  couponTag = document.getElementById('coupon-tag');
-  removeCouponBtn = document.getElementById('remove-coupon-btn');
-  checkoutBtn = document.getElementById('checkout-btn');
-
-  wishlistCount = document.getElementById('wishlist-count');
-  openWishlistBtn = document.getElementById('open-wishlist-btn');
-
   quickViewOverlay = document.getElementById('quick-view-overlay');
   quickViewModal = document.getElementById('quick-view-modal');
   quickViewBody = document.getElementById('quick-view-body');
   closeModalBtn = document.getElementById('close-modal-btn');
-
-  quizOverlay = document.getElementById('quiz-overlay');
-  quizModal = document.getElementById('quiz-modal');
-  quizModalBody = document.getElementById('quiz-modal-body');
-  openQuizModalBtn = document.getElementById('open-quiz-modal-btn');
-  startQuizBtn = document.getElementById('start-quiz-btn');
-  closeQuizModalBtn = document.getElementById('close-quiz-modal-btn');
-
-  checkoutOverlay = document.getElementById('checkout-overlay');
-  checkoutModal = document.getElementById('checkout-modal');
-  checkoutBody = document.getElementById('checkout-body');
-  closeCheckoutModalBtn = document.getElementById('close-checkout-modal-btn');
 
   policyOverlay = document.getElementById('policy-overlay');
   policyModal = document.getElementById('policy-modal');
   policyModalBody = document.getElementById('policy-modal-body');
   closePolicyModalBtn = document.getElementById('close-policy-modal-btn');
 
-  newsletterForm = document.getElementById('newsletter-form');
-  newsletterEmail = document.getElementById('newsletter-email');
+  inquiryOverlay = document.getElementById('inquiry-overlay');
+  inquiryModal = document.getElementById('inquiry-modal');
+  closeInquiryModalBtn = document.getElementById('close-inquiry-modal-btn');
+  inquiryForm = document.getElementById('inquiry-form');
 
   mobileToggleBtn = document.getElementById('mobile-toggle-btn');
   navMenu = document.getElementById('nav-menu');
 }
 
-// Theme Management
+// Theme Handling
 function initTheme() {
   document.documentElement.setAttribute('data-theme', state.theme);
   if (themeSelector) {
@@ -297,7 +416,7 @@ function setTheme(themeName) {
   state.theme = themeName;
   document.documentElement.setAttribute('data-theme', themeName);
   localStorage.setItem('mellkderma_theme', themeName);
-  showToast(`Theme changed to ${getThemeLabel(themeName)}`);
+  showToast(`Active Theme: ${getThemeLabel(themeName)}`);
 }
 
 function getThemeLabel(t) {
@@ -309,25 +428,30 @@ function getThemeLabel(t) {
   }
 }
 
-// Setup All Event Listeners
+// Setup Event Listeners
 function setupEventListeners() {
-  themeSelector?.addEventListener('change', (e) => {
-    setTheme(e.target.value);
-  });
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (header) {
+      if (window.scrollY > 20) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+  }, { passive: true });
 
   mobileToggleBtn?.addEventListener('click', (e) => {
     e.stopPropagation();
     navMenu?.classList.toggle('active');
   });
 
-  // Close mobile nav when clicking any nav link
   navMenu?.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
       navMenu?.classList.remove('active');
     });
   });
 
-  // Close mobile nav when clicking outside
   document.addEventListener('click', (e) => {
     if (navMenu?.classList.contains('active') && !navMenu.contains(e.target) && !mobileToggleBtn?.contains(e.target)) {
       navMenu.classList.remove('active');
@@ -358,71 +482,19 @@ function setupEventListeners() {
     applyFilters();
   });
 
-  openCartBtn?.addEventListener('click', openCart);
-  closeCartBtn?.addEventListener('click', closeCart);
-  cartOverlay?.addEventListener('click', closeCart);
-
-  applyCouponBtn?.addEventListener('click', () => {
-    const code = couponInput.value.trim().toUpperCase();
-    if (code === 'MELLK10') {
-      state.appliedCoupon = { code: 'MELLK10', discount: 0.10 };
-      couponInput.value = '';
-      showToast('10% Discount Code MELLK10 Applied!');
-      updateCartUI();
-    } else {
-      showToast('Invalid Coupon Code. Try MELLK10');
-    }
-  });
-
-  removeCouponBtn?.addEventListener('click', () => {
-    state.appliedCoupon = null;
-    showToast('Coupon removed');
-    updateCartUI();
-  });
-
-  checkoutBtn?.addEventListener('click', () => {
-    if (state.cart.length === 0) {
-      showToast('Your cart is empty');
-      return;
-    }
-    closeCart();
-    openCheckoutModal();
-  });
-
   closeModalBtn?.addEventListener('click', closeQuickView);
   quickViewOverlay?.addEventListener('click', closeQuickView);
-
-  closeQuizModalBtn?.addEventListener('click', closeQuiz);
-  quizOverlay?.addEventListener('click', closeQuiz);
-
-  closeCheckoutModalBtn?.addEventListener('click', closeCheckout);
-  checkoutOverlay?.addEventListener('click', closeCheckout);
 
   closePolicyModalBtn?.addEventListener('click', closePolicyModal);
   policyOverlay?.addEventListener('click', closePolicyModal);
 
-  newsletterForm?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = newsletterEmail ? newsletterEmail.value.trim() : '';
-    if (email) {
-      if (newsletterEmail) newsletterEmail.value = '';
-      showToast('Subscribed! Welcome to the Mellkderma Dermatology Club.');
-    }
-  });
+  closeInquiryModalBtn?.addEventListener('click', closeInquiryModal);
+  inquiryOverlay?.addEventListener('click', closeInquiryModal);
 
-  openQuizModalBtn?.addEventListener('click', openQuiz);
-  startQuizBtn?.addEventListener('click', openQuiz);
-
-  openWishlistBtn?.addEventListener('click', () => {
-    state.category = 'All';
-    state.filteredProducts = state.products.filter(p => state.wishlist.includes(p.id));
-    renderProductsGrid(state.filteredProducts);
-    document.getElementById('shop')?.scrollIntoView({ behavior: 'smooth' });
-    showToast(`Showing ${state.wishlist.length} wishlist items`);
-  });
+  inquiryForm?.addEventListener('submit', handleInquirySubmit);
 }
 
-// --- Product Filtering & Rendering ---
+// Product Filtering
 function applyFilters() {
   let list = [...state.products];
 
@@ -431,14 +503,18 @@ function applyFilters() {
   }
 
   if (state.concern !== 'All') {
-    list = list.filter(p => p.concern.includes(state.concern));
+    list = list.filter(p => 
+      p.concern.toLowerCase().includes(state.concern.toLowerCase()) || 
+      p.skinType.toLowerCase().includes(state.concern.toLowerCase())
+    );
   }
 
   if (state.searchQuery) {
     list = list.filter(p => 
       p.name.toLowerCase().includes(state.searchQuery) ||
       p.subname.toLowerCase().includes(state.searchQuery) ||
-      p.activeIngredients.some(ing => ing.toLowerCase().includes(state.searchQuery))
+      p.formulatedWith.some(f => f.ingredient.toLowerCase().includes(state.searchQuery)) ||
+      p.concern.toLowerCase().includes(state.searchQuery)
     );
   }
 
@@ -446,91 +522,80 @@ function applyFilters() {
     list.sort((a, b) => a.price - b.price);
   } else if (state.sort === 'price-high') {
     list.sort((a, b) => b.price - a.price);
-  } else if (state.sort === 'rating') {
-    list.sort((a, b) => b.rating - a.rating);
+  } else if (state.sort === 'name-az') {
+    list.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   state.filteredProducts = list;
   renderProductsGrid(list);
 }
 
-function renderProducts() {
-  renderProductsGrid(state.products);
-}
-
+// Render Products Grid
 function renderProductsGrid(productsList) {
   if (!productGrid) return;
   
   if (productsList.length === 0) {
     productGrid.innerHTML = `
-      <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; background: #fff; border-radius: 16px;">
+      <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; background: #fff; border-radius: 16px; border: 1px solid var(--border-light);">
         <i class="fa-solid fa-flask" style="font-size: 3rem; color: #cbd5e1; margin-bottom: 16px;"></i>
-        <h3 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--slate-dark);">No Products Found</h3>
-        <p style="color: var(--slate-muted); margin-top: 8px;">Try clearing your filters or adjusting your search query.</p>
+        <h3 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--slate-dark);">No Formulations Found</h3>
+        <p style="color: var(--slate-muted); margin-top: 8px;">Please adjust your search criteria or select 'All Formulations'.</p>
       </div>
     `;
     return;
   }
 
-  productGrid.innerHTML = productsList.map(p => {
-    const isWishlisted = state.wishlist.includes(p.id);
-    return `
-      <div class="product-card">
-        <span class="product-badge gold">${p.badge}</span>
-        
-        <button class="product-wishlist-toggle ${isWishlisted ? 'active' : ''}" onclick="toggleWishlist('${p.id}')">
-          <i class="${isWishlisted ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
-        </button>
+  productGrid.innerHTML = productsList.map(p => `
+    <div class="product-card">
+      <span class="product-badge gold">${p.badge}</span>
 
-        <div class="product-image-box tint-${p.id}" onclick="openQuickView('${p.id}')" style="cursor: pointer;">
-          <img src="${p.image}" alt="${p.name}" loading="lazy">
-          <button class="quick-view-trigger" onclick="event.stopPropagation(); openQuickView('${p.id}')">
-            <i class="fa-regular fa-eye"></i> Quick View
+      <div class="product-image-box tint-${p.id}" onclick="openQuickView('${p.id}')" style="cursor: pointer;" title="Click to view full clinical monograph">
+        <img src="${p.image}" alt="${p.name}" loading="lazy">
+        <button class="quick-view-trigger" onclick="event.stopPropagation(); openQuickView('${p.id}')">
+          <i class="fa-solid fa-file-medical"></i> View Monograph
+        </button>
+      </div>
+
+      <div class="product-content">
+        <div class="product-cat-row">
+          <span class="product-cat">${p.category}</span>
+          <span class="product-vol-pill"><i class="fa-solid fa-box-archive"></i> ${p.volume}</span>
+        </div>
+
+        <h3 class="product-title" onclick="openQuickView('${p.id}')" style="cursor: pointer;">${p.name}</h3>
+        <p class="product-subname">${p.subname}</p>
+
+        <div class="product-meta-row">
+          <span class="clinical-indication-badge"><i class="fa-solid fa-notes-medical"></i> ${p.concern.split(',')[0].trim()}</span>
+        </div>
+
+        <div class="product-actives-block">
+          <div class="actives-heading">Formulated With:</div>
+          <div class="product-actives">
+            ${p.formulatedWith.map(f => `<span class="active-tag">${f.ingredient.split('(')[0].trim()}</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="product-footer manufacturer-footer">
+          <div class="mrp-box">
+            <span class="mrp-label">M.R.P. (Incl. of all taxes)</span>
+            <span class="current-price">₹${p.price.toLocaleString('en-IN')}</span>
+          </div>
+          <button class="view-details-btn" onclick="openQuickView('${p.id}')" title="Read Full Medicine Information">
+            <i class="fa-solid fa-file-waveform"></i> Monograph
           </button>
         </div>
-
-        <div class="product-content">
-          <div class="product-cat-row">
-            <span class="product-cat">${p.category}</span>
-            <span class="product-vol-pill">${p.volume.split('/')[0].trim()}</span>
-          </div>
-          <h3 class="product-title" onclick="openQuickView('${p.id}')" style="cursor: pointer;">${p.name}</h3>
-          <p class="product-subname">${p.subname}</p>
-
-          <div class="product-meta-row">
-            <span class="skin-type-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> ${p.skinType}</span>
-          </div>
-
-          <div class="product-rating">
-            <i class="fa-solid fa-star"></i>
-            <strong>${p.rating}</strong>
-            <span class="rating-count">(${p.reviewsCount} Verified Reviews)</span>
-          </div>
-
-          <div class="product-actives">
-            ${p.activeIngredients.map(ing => `<span class="active-tag">${ing}</span>`).join('')}
-          </div>
-
-          <div class="product-footer">
-            <div class="price-box">
-              <span class="current-price">₹${p.price.toLocaleString('en-IN')}</span>
-            </div>
-            <button class="add-cart-btn" onclick="addToCart('${p.id}')">
-              <i class="fa-solid fa-bag-shopping"></i> Add
-            </button>
-          </div>
-        </div>
       </div>
-    `;
-  }).join('');
+    </div>
+  `).join('');
 }
 
-// --- Science Section ---
+// Render Science Grid
 function renderScience() {
   if (!scienceGrid) return;
   scienceGrid.innerHTML = CLINICAL_INGREDIENTS.map(ing => `
     <div class="science-card">
-      <div class="science-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
+      <div class="science-icon"><i class="fa-solid fa-flask-vial"></i></div>
       <h3>${ing.name}</h3>
       <span class="science-role">${ing.role}</span>
       <p>${ing.description}</p>
@@ -538,190 +603,94 @@ function renderScience() {
   `).join('');
 }
 
-// --- Cart Actions & UI ---
-window.addToCart = function(productId, qty = 1) {
-  const product = state.products.find(p => p.id === productId);
-  if (!product) return;
-
-  const existing = state.cart.find(item => item.id === productId);
-  if (existing) {
-    existing.quantity += qty;
-  } else {
-    state.cart.push({ ...product, quantity: qty });
-  }
-
-  saveCart();
-  updateCartUI();
-  openCart();
-  showToast(`Added ${product.name} to cart!`);
-};
-
-window.updateQty = function(productId, delta) {
-  const item = state.cart.find(i => i.id === productId);
-  if (!item) return;
-
-  item.quantity += delta;
-  if (item.quantity <= 0) {
-    state.cart = state.cart.filter(i => i.id !== productId);
-  }
-
-  saveCart();
-  updateCartUI();
-};
-
-window.removeFromCart = function(productId) {
-  state.cart = state.cart.filter(i => i.id !== productId);
-  saveCart();
-  updateCartUI();
-  showToast('Item removed from cart');
-};
-
-function saveCart() {
-  localStorage.setItem('mellkderma_cart', JSON.stringify(state.cart));
-}
-
-function updateCartUI() {
-  if (!cartCount || !cartItemCount) return;
-
-  const totalCount = state.cart.reduce((sum, item) => sum + item.quantity, 0);
-  cartCount.textContent = totalCount;
-  cartItemCount.textContent = totalCount;
-
-  const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  
-  const freeThreshold = 999;
-  if (shippingMsg && shippingProgress) {
-    if (subtotal >= freeThreshold || totalCount === 0) {
-      shippingMsg.innerHTML = `<i class="fa-solid fa-circle-check"></i> You have unlocked <strong>FREE Express Shipping</strong>!`;
-      shippingProgress.style.width = '100%';
-    } else {
-      const diff = freeThreshold - subtotal;
-      shippingMsg.innerHTML = `Add <strong>₹${diff.toLocaleString('en-IN')}</strong> more for FREE Shipping!`;
-      shippingProgress.style.width = `${(subtotal / freeThreshold) * 100}%`;
-    }
-  }
-
-  if (cartItemsBody) {
-    if (state.cart.length === 0) {
-      cartItemsBody.innerHTML = `
-        <div class="empty-cart-view">
-          <i class="fa-solid fa-bag-shopping"></i>
-          <h4>Your Shopping Cart is Empty</h4>
-          <p>Explore our clinical skincare range and add items to your cart.</p>
-        </div>
-      `;
-    } else {
-      cartItemsBody.innerHTML = state.cart.map(item => `
-        <div class="cart-item">
-          <img src="${item.image}" alt="${item.name}" class="cart-item-img">
-          <div class="cart-item-info">
-            <h4 class="cart-item-name">${item.name}</h4>
-            <div class="cart-item-price">₹${(item.price * item.quantity).toLocaleString('en-IN')}</div>
-            <div class="cart-qty-ctrl">
-              <button onclick="updateQty('${item.id}', -1)">-</button>
-              <span>${item.quantity}</span>
-              <button onclick="updateQty('${item.id}', 1)">+</button>
-            </div>
-          </div>
-          <button class="cart-item-remove" onclick="removeFromCart('${item.id}')">
-            <i class="fa-solid fa-trash-can"></i>
-          </button>
-        </div>
-      `).join('');
-    }
-  }
-
-  if (cartSubtotal) cartSubtotal.textContent = `₹${subtotal.toLocaleString('en-IN')}`;
-  
-  let discountAmount = 0;
-  if (state.appliedCoupon) {
-    discountAmount = subtotal * state.appliedCoupon.discount;
-    if (discountRow) discountRow.style.display = 'flex';
-    if (cartDiscount) cartDiscount.textContent = `-₹${discountAmount.toLocaleString('en-IN')}`;
-    if (couponTag) couponTag.style.display = 'flex';
-  } else {
-    if (discountRow) discountRow.style.display = 'none';
-    if (couponTag) couponTag.style.display = 'none';
-  }
-
-  const shippingCost = (subtotal >= freeThreshold || totalCount === 0) ? 0 : 99;
-  if (cartShipping) cartShipping.textContent = shippingCost === 0 ? 'FREE' : `₹${shippingCost}`;
-
-  const grandTotal = Math.max(0, subtotal - discountAmount + shippingCost);
-  if (cartGrandTotal) cartGrandTotal.textContent = `₹${grandTotal.toLocaleString('en-IN')}`;
-}
-
-function openCart() {
-  cartDrawer?.classList.add('active');
-  cartOverlay?.classList.add('active');
-}
-
-function closeCart() {
-  cartDrawer?.classList.remove('active');
-  cartOverlay?.classList.remove('active');
-}
-
-// --- Wishlist ---
-window.toggleWishlist = function(productId) {
-  if (state.wishlist.includes(productId)) {
-    state.wishlist = state.wishlist.filter(id => id !== productId);
-    showToast('Removed from Wishlist');
-  } else {
-    state.wishlist.push(productId);
-    showToast('Added to Wishlist!');
-  }
-  localStorage.setItem('mellkderma_wishlist', JSON.stringify(state.wishlist));
-  updateWishlistUI();
-  renderProductsGrid(state.filteredProducts);
-};
-
-function updateWishlistUI() {
-  if (wishlistCount) wishlistCount.textContent = state.wishlist.length;
-}
-
-// --- Quick View Modal ---
+// Open Product Monograph / Full Clinical Specification Modal
 window.openQuickView = function(productId) {
   const p = state.products.find(item => item.id === productId);
   if (!p || !quickViewBody) return;
 
   quickViewBody.innerHTML = `
-    <div class="quick-view-grid">
+    <div class="quick-view-grid monograph-modal-grid">
       <div class="quick-view-image tint-${p.id}">
         <img src="${p.bottleImage || p.image}" alt="${p.name}">
+        <div class="packaging-spec-pill">
+          <i class="fa-solid fa-prescription-bottle-medical"></i> ${p.dosageForm} &bull; ${p.volume}
+        </div>
       </div>
+
       <div class="quick-view-details">
-        <span class="product-cat">${p.category} &bull; ${p.volume}</span>
+        <div class="monograph-header-top">
+          <span class="monograph-badge"><i class="fa-solid fa-certificate"></i> Catalogue Page ${p.cataloguePage} &bull; Official Formulation</span>
+          <span class="product-cat">${p.category}</span>
+        </div>
+
         <h2>${p.name}</h2>
         <p class="subname">${p.subname}</p>
         
-        <div class="quick-view-price">
-          ₹${p.price.toLocaleString('en-IN')}
+        <div class="monograph-price-bar">
+          <div>
+            <span class="mrp-subtext">Maximum Retail Price (M.R.P.)</span>
+            <div class="quick-view-price">₹${p.price.toLocaleString('en-IN')}</div>
+            <small style="color: var(--slate-muted); font-size: 0.8rem;">Inclusive of all taxes &bull; Net Qty: ${p.volume}</small>
+          </div>
+          <div class="manufacturer-seal">
+            <i class="fa-solid fa-shield-halved text-gold"></i>
+            <div>
+              <strong>GMP QUALITY COMPLIANT</strong>
+              <small>Mellkderma Skincare Pvt. Ltd.</small>
+            </div>
+          </div>
         </div>
 
         <p class="quick-view-description">${p.description}</p>
 
         <div class="quick-view-tabs">
-          <button class="tab-btn active" onclick="switchModalTab(this, 'overview-tab', '${p.id}')">Key Actives</button>
-          <button class="tab-btn" onclick="switchModalTab(this, 'usage-tab', '${p.id}')">How To Use</button>
-          <button class="tab-btn" onclick="switchModalTab(this, 'skin-tab', '${p.id}')">Skin Concerns</button>
-        </div>
-
-        <div class="tab-panel" id="modal-tab-content">
-          <strong>Clinical Bio-Actives:</strong> ${p.activeIngredients.join(' • ')}<br>
-          <small style="color: var(--slate-muted); display: block; margin-top: 6px;">Net Volume: ${p.volume} | Dermatologically Tested</small>
-        </div>
-
-        <div style="display: flex; gap: 14px; margin-top: 24px;">
-          <button class="btn btn-gold btn-lg" style="flex: 1;" onclick="addToCart('${p.id}'); closeQuickView();">
-            <i class="fa-solid fa-bag-shopping"></i> Add To Cart — ₹${p.price.toLocaleString('en-IN')}
+          <button class="tab-btn active" onclick="switchModalTab(this, 'actives-tab', '${p.id}')">
+            <i class="fa-solid fa-vials"></i> Formulated With
+          </button>
+          <button class="tab-btn" onclick="switchModalTab(this, 'benefits-tab', '${p.id}')">
+            <i class="fa-solid fa-clipboard-check"></i> Clinical Benefits
+          </button>
+          <button class="tab-btn" onclick="switchModalTab(this, 'dosage-tab', '${p.id}')">
+            <i class="fa-solid fa-hand-holding-medical"></i> Administration & Use
+          </button>
+          <button class="tab-btn" onclick="switchModalTab(this, 'storage-tab', '${p.id}')">
+            <i class="fa-solid fa-triangle-exclamation"></i> Storage & Caution
           </button>
         </div>
+
+        <div class="tab-panel monograph-panel" id="modal-tab-content">
+          <div class="panel-section">
+            <strong style="color: var(--slate-dark); font-size: 1rem; display: block; margin-bottom: 8px;">Key Active Ingredients:</strong>
+            ${p.formulatedWith.map(f => `
+              <div style="margin-bottom: 10px;">
+                <strong style="color: var(--gold-dark);"><i class="fa-solid fa-flask"></i> ${f.ingredient}:</strong>
+                <span style="display: block; margin-top: 3px; font-size: 0.92rem; color: var(--slate-body);">${f.details}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="monograph-actions-row">
+          <button type="button" class="btn btn-gold btn-lg" onclick="openInquiryModal('${p.id}')">
+            <i class="fa-solid fa-file-signature"></i> Inquire Availability & Institutional Supply
+          </button>
+          <a href="mailto:care@mellkderma.com?subject=Inquiry%20for%20${encodeURIComponent(p.name)}" class="btn btn-outline btn-lg">
+            <i class="fa-solid fa-envelope"></i> Email Medical Desk
+          </a>
+        </div>
+
+        <div class="monograph-regulatory-note">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <span><strong>Medical Notice:</strong> This product monograph is published for healthcare professionals and medical reference. Not for self-medication. As recommended by Dermatologists.</span>
+        </div>
+
       </div>
     </div>
   `;
 
   quickViewOverlay?.classList.add('active');
   quickViewModal?.classList.add('active');
+  if (quickViewModal) quickViewModal.scrollTop = 0;
 };
 
 window.switchModalTab = function(btn, tabType, productId) {
@@ -732,12 +701,49 @@ window.switchModalTab = function(btn, tabType, productId) {
   const p = state.products.find(item => item.id === productId);
   if (!contentEl || !p) return;
 
-  if (tabType === 'overview-tab') {
-    contentEl.innerHTML = `<strong>Clinical Bio-Actives:</strong> ${p.activeIngredients.join(' • ')}<br><small style="color: var(--slate-muted); display: block; margin-top: 6px;">Net Volume: ${p.volume} | Dermatologically Tested</small>`;
-  } else if (tabType === 'usage-tab') {
-    contentEl.innerHTML = `<strong>Dermatologist Application Protocol:</strong> ${p.usage}`;
+  if (tabType === 'actives-tab') {
+    contentEl.innerHTML = `
+      <div class="panel-section">
+        <strong style="color: var(--slate-dark); font-size: 1rem; display: block; margin-bottom: 8px;">Key Active Ingredients:</strong>
+        ${p.formulatedWith.map(f => `
+          <div style="margin-bottom: 10px;">
+            <strong style="color: var(--gold-dark);"><i class="fa-solid fa-flask"></i> ${f.ingredient}:</strong>
+            <span style="display: block; margin-top: 3px; font-size: 0.92rem; color: var(--slate-body);">${f.details}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  } else if (tabType === 'benefits-tab') {
+    contentEl.innerHTML = `
+      <div class="panel-section">
+        <strong style="color: var(--slate-dark); font-size: 1rem; display: block; margin-bottom: 8px;">Dermatological & Clinical Benefits:</strong>
+        <ul style="padding-left: 20px; line-height: 1.7; margin-top: 6px; color: var(--slate-body);">
+          ${p.dermatologicalBenefits.map(b => `<li>${b}</li>`).join('')}
+        </ul>
+        <div style="margin-top: 14px; padding-top: 10px; border-top: 1px dashed var(--border-light); font-size: 0.88rem; color: var(--slate-muted);">
+          Therapeutic Target: <strong>${p.concern}</strong> &bull; Recommended Skin Profile: <strong>${p.skinType}</strong>
+        </div>
+      </div>
+    `;
+  } else if (tabType === 'dosage-tab') {
+    contentEl.innerHTML = `
+      <div class="panel-section">
+        <strong style="color: var(--slate-dark); font-size: 1rem; display: block; margin-bottom: 8px;">Administration & Clinical Directions:</strong>
+        <p style="margin-top: 6px; line-height: 1.65; color: var(--slate-body);">${p.usage}</p>
+        <div style="margin-top: 14px; padding-top: 10px; border-top: 1px dashed var(--border-light); font-size: 0.88rem;">
+          Presentation: <strong>${p.volume}</strong> &bull; Dosage Form: <strong>${p.dosageForm}</strong>
+        </div>
+      </div>
+    `;
   } else {
-    contentEl.innerHTML = `<strong>Ideal Skin Profile:</strong> ${p.skinType}<br><strong>Targets:</strong> ${p.concern}`;
+    contentEl.innerHTML = `
+      <div class="panel-section">
+        <strong style="color: var(--slate-dark); font-size: 1rem; display: block; margin-bottom: 8px;">Storage Instructions:</strong>
+        <p style="margin-top: 4px; color: var(--slate-body);">${p.storage}</p>
+        <strong style="color: var(--slate-dark); font-size: 1rem; display: block; margin-top: 12px; margin-bottom: 6px;">Precautionary Guidance:</strong>
+        <p style="margin-top: 4px; line-height: 1.65; color: var(--slate-body);">${p.caution}</p>
+      </div>
+    `;
   }
 };
 
@@ -746,316 +752,24 @@ function closeQuickView() {
   quickViewModal?.classList.remove('active');
 }
 
-// --- Interactive Skin Routine Quiz ---
-function openQuiz() {
-  renderQuizStep(1);
-  quizOverlay?.classList.add('active');
-  quizModal?.classList.add('active');
-}
-
-function closeQuiz() {
-  quizOverlay?.classList.remove('active');
-  quizModal?.classList.remove('active');
-}
-
-function renderQuizStep(step) {
-  if (!quizModalBody) return;
-
-  if (step === 1) {
-    quizModalBody.innerHTML = `
-      <h3 class="quiz-step-title">Step 1: Select Your Primary Skin Type</h3>
-      <p class="quiz-step-subtitle">How does your skin usually feel during the day?</p>
-      
-      <div class="quiz-options-grid">
-        <div class="quiz-option-card" onclick="selectQuizOption('skinType', 'Oily / Acne Prone', 2)">
-          <i class="fa-solid fa-droplet-slash"></i>
-          <div>
-            <h4>Oily / Acne Prone</h4>
-            <small>Frequent breakouts, shine, enlarged pores</small>
-          </div>
-        </div>
-        <div class="quiz-option-card" onclick="selectQuizOption('skinType', 'Dry / Dehydrated', 2)">
-          <i class="fa-solid fa-sun-plant-wilt"></i>
-          <div>
-            <h4>Dry / Dehydrated</h4>
-            <small>Tightness, flakiness, rough texture</small>
-          </div>
-        </div>
-        <div class="quiz-option-card" onclick="selectQuizOption('skinType', 'Normal / Combination', 2)">
-          <i class="fa-solid fa-face-smile"></i>
-          <div>
-            <h4>Normal / Combination</h4>
-            <small>Oily T-zone, normal cheeks</small>
-          </div>
-        </div>
-        <div class="quiz-option-card" onclick="selectQuizOption('skinType', 'Sensitive / Reactive', 2)">
-          <i class="fa-solid fa-shield-cat"></i>
-          <div>
-            <h4>Sensitive / Reactive</h4>
-            <small>Redness, easily irritated by products</small>
-          </div>
-        </div>
-      </div>
-    `;
-  } else if (step === 2) {
-    quizModalBody.innerHTML = `
-      <h3 class="quiz-step-title">Step 2: What is Your Main Skin Concern?</h3>
-      <p class="quiz-step-subtitle">Select the goal you want to achieve most.</p>
-      
-      <div class="quiz-options-grid">
-        <div class="quiz-option-card" onclick="selectQuizOption('concern', 'Sun Damage & HEV Light', 3)">
-          <i class="fa-solid fa-sun"></i>
-          <div>
-            <h4>Sun & Blue Light Defense</h4>
-            <small>Prevent tan, sunspots & HEV light damage</small>
-          </div>
-        </div>
-        <div class="quiz-option-card" onclick="selectQuizOption('concern', 'Dullness & Hyperpigmentation', 3)">
-          <i class="fa-solid fa-wand-magic-sparkles"></i>
-          <div>
-            <h4>Hyperpigmentation & Glow</h4>
-            <small>Fade dark spots & uneven skin tone</small>
-          </div>
-        </div>
-        <div class="quiz-option-card" onclick="selectQuizOption('concern', 'Fine Lines & Anti-Aging', 3)">
-          <i class="fa-solid fa-hourglass-half"></i>
-          <div>
-            <h4>Anti-Aging & Firming</h4>
-            <small>Reduce wrinkles, lift & tighten skin</small>
-          </div>
-        </div>
-        <div class="quiz-option-card" onclick="selectQuizOption('concern', 'Barrier Repair & Hydration', 3)">
-          <i class="fa-solid fa-water"></i>
-          <div>
-            <h4>Intense Hydration</h4>
-            <small>Restore compromised skin moisture barrier</small>
-          </div>
-        </div>
-      </div>
-    `;
-  } else if (step === 3) {
-    const matches = state.products.filter(p => 
-      p.skinType.toLowerCase().includes(state.quizAnswers.skinType.split(' ')[0].toLowerCase()) ||
-      p.concern.toLowerCase().includes(state.quizAnswers.concern.split(' ')[0].toLowerCase())
-    ).slice(0, 2);
-
-    const recs = matches.length > 0 ? matches : state.products.slice(0, 2);
-
-    quizModalBody.innerHTML = `
-      <div style="text-align: center;">
-        <i class="fa-solid fa-circle-check" style="font-size: 3rem; color: var(--clinical-teal); margin-bottom: 12px;"></i>
-        <h3 class="quiz-step-title">Your Customized Mellkderma Regimen</h3>
-        <p class="quiz-step-subtitle">Based on your selection (${state.quizAnswers.skinType} + ${state.quizAnswers.concern})</p>
-        
-        <div class="quiz-recs-grid">
-          ${recs.map(p => `
-            <div class="quiz-rec-card">
-              <img src="${p.image}" alt="${p.name}">
-              <h4>${p.name}</h4>
-              <p>${p.subname}</p>
-              <strong>₹${p.price.toLocaleString('en-IN')}</strong>
-              <button class="btn btn-dark btn-block" style="margin-top: 12px;" onclick="addToCart('${p.id}'); closeQuiz();">
-                Add Regimen Item
-              </button>
-            </div>
-          `).join('')}
-        </div>
-
-        <button class="btn btn-outline" onclick="closeQuiz()">Close Analysis</button>
-      </div>
-    `;
-  }
-}
-
-window.selectQuizOption = function(key, val, nextStep) {
-  state.quizAnswers[key] = val;
-  renderQuizStep(nextStep);
-};
-
-// --- Checkout Modal ---
-function openCheckoutModal() {
-  if (!checkoutBody) return;
-
-  const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  let discountAmount = state.appliedCoupon ? subtotal * state.appliedCoupon.discount : 0;
-  const shipping = subtotal >= 999 ? 0 : 99;
-  const grandTotal = subtotal - discountAmount + shipping;
-
-  checkoutBody.innerHTML = `
-    <div class="checkout-modal-inner">
-      <h2 class="checkout-modal-title">Secure Clinical Checkout</h2>
-      <p class="checkout-modal-subtitle">Complete your delivery & payment details below.</p>
-
-      <form id="checkout-form" onsubmit="handleOrderSubmit(event)">
-        <div class="checkout-layout-grid">
-          
-          <div class="checkout-form-col">
-            <h4 class="checkout-section-heading"><i class="fa-solid fa-location-dot text-gold"></i> Shipping Address</h4>
-            
-            <div class="form-row-2">
-              <input type="text" placeholder="Full Name *" required class="checkout-input">
-              <input type="tel" placeholder="Mobile Phone *" required class="checkout-input">
-            </div>
-
-            <input type="email" placeholder="Email Address *" required class="checkout-input full-width">
-            
-            <textarea placeholder="Street Address, Flat/House No. *" required rows="3" class="checkout-textarea"></textarea>
-
-            <div class="form-row-3">
-              <input type="text" placeholder="City *" required class="checkout-input">
-              <input type="text" placeholder="State *" required class="checkout-input">
-              <input type="text" placeholder="PIN Code *" required class="checkout-input">
-            </div>
-
-            <h4 class="checkout-section-heading"><i class="fa-solid fa-credit-card text-gold"></i> Payment Method</h4>
-            
-            <div class="payment-options-list">
-              <label class="payment-method-label">
-                <input type="radio" name="payment" value="upi" checked>
-                <i class="fa-solid fa-qrcode text-teal" style="font-size: 1.2rem;"></i>
-                <div>
-                  <strong>Instant UPI Payment</strong>
-                  <small style="display: block; color: var(--slate-muted);">Google Pay, PhonePe, Paytm, BHIM</small>
-                </div>
-              </label>
-
-              <label class="payment-method-label">
-                <input type="radio" name="payment" value="card">
-                <i class="fa-solid fa-credit-card text-gold" style="font-size: 1.2rem;"></i>
-                <div>
-                  <strong>Credit / Debit Card</strong>
-                  <small style="display: block; color: var(--slate-muted);">Visa, MasterCard, RuPay</small>
-                </div>
-              </label>
-
-              <label class="payment-method-label">
-                <input type="radio" name="payment" value="cod">
-                <i class="fa-solid fa-hand-holding-dollar text-slate" style="font-size: 1.2rem;"></i>
-                <div>
-                  <strong>Cash on Delivery (COD)</strong>
-                  <small style="display: block; color: var(--slate-muted);">Pay upon delivery at your doorstep</small>
-                </div>
-              </label>
-            </div>
-          </div>
-
-          <!-- Order Summary Card -->
-          <div class="checkout-summary-card">
-            <h4 style="font-family: var(--font-serif); font-size: 1.15rem; margin-bottom: 16px; color: var(--slate-dark);">Order Summary</h4>
-            
-            <div style="max-height: 200px; overflow-y: auto; margin-bottom: 16px;">
-              ${state.cart.map(item => `
-                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px;">
-                  <span>${item.name} (x${item.quantity})</span>
-                  <strong>₹${(item.price * item.quantity).toLocaleString('en-IN')}</strong>
-                </div>
-              `).join('')}
-            </div>
-
-            <div style="border-top: 1px solid var(--border-light); padding-top: 12px; display: flex; flex-direction: column; gap: 6px; font-size: 0.88rem;">
-              <div style="display: flex; justify-content: space-between;">
-                <span>Subtotal</span>
-                <span>₹${subtotal.toLocaleString('en-IN')}</span>
-              </div>
-              ${discountAmount > 0 ? `
-                <div style="display: flex; justify-content: space-between; color: var(--clinical-teal-dark);">
-                  <span>Discount (10%)</span>
-                  <span>-₹${discountAmount.toLocaleString('en-IN')}</span>
-                </div>
-              ` : ''}
-              <div style="display: flex; justify-content: space-between;">
-                <span>Shipping</span>
-                <span>${shipping === 0 ? 'FREE' : `₹${shipping}`}</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: 700; color: var(--slate-dark); border-top: 1px solid var(--border-light); padding-top: 10px; margin-top: 4px;">
-                <span>Total Amount</span>
-                <span>₹${grandTotal.toLocaleString('en-IN')}</span>
-              </div>
-            </div>
-
-            <button type="submit" class="btn btn-gold btn-block btn-lg" style="margin-top: 24px;">
-              <i class="fa-solid fa-check"></i> Complete Order
-            </button>
-          </div>
-
-        </div>
-      </form>
-    </div>
-  `;
-
-  checkoutOverlay?.classList.add('active');
-  checkoutModal?.classList.add('active');
-}
-
-window.handleOrderSubmit = function(e) {
-  e.preventDefault();
-  
-  if (checkoutBody) {
-    checkoutBody.innerHTML = `
-      <div style="text-align: center; padding: 60px 40px;">
-        <div style="width: 80px; height: 80px; background: #dcfce7; color: #16a34a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 20px auto;">
-          <i class="fa-solid fa-check"></i>
-        </div>
-        <h2 style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--slate-dark); margin-bottom: 10px;">Order Placed Successfully!</h2>
-        <p style="color: var(--slate-muted); font-size: 1.05rem; margin-bottom: 24px;">Thank you for choosing Mellkderma Skincare Private Limited. Your Order ID is <strong>#MKD-${Math.floor(100000 + Math.random() * 900000)}</strong>.</p>
-        <p style="font-size: 0.9rem; color: var(--slate-body); margin-bottom: 32px;">A confirmation receipt and tracking link have been dispatched to your email.</p>
-
-        <button class="btn btn-primary btn-lg" onclick="finishOrderFlow()">Continue Shopping</button>
-      </div>
-    `;
-  }
-};
-
-window.finishOrderFlow = function() {
-  state.cart = [];
-  saveCart();
-  updateCartUI();
-  closeCheckout();
-  showToast('Order confirmed! Welcome to Mellkderma.');
-};
-
-function closeCheckout() {
-  checkoutOverlay?.classList.remove('active');
-  checkoutModal?.classList.remove('active');
-}
-
-// --- Toast Notification Helper ---
-function showToast(message) {
-  const container = document.getElementById('toast-container');
-  if (!container) return;
-
-  const toast = document.createElement('div');
-  toast.className = 'toast';
-  toast.innerHTML = `<i class="fa-solid fa-circle-check text-gold"></i> <span>${message}</span>`;
-  
-  container.appendChild(toast);
-
-  setTimeout(() => {
-    toast.style.opacity = '0';
-    toast.style.transform = 'translateX(100%)';
-    toast.style.transition = 'all 0.3s ease';
-    setTimeout(() => toast.remove(), 300);
-  }, 3200);
-}
-
-// --- AM / PM Clinical Regimen Protocol ---
+// --- AM / PM Clinical Regimen Protocol (Physician Reference) ---
 const REGIMEN_PROTOCOLS = {
   am: {
-    title: "Morning Defense & Radiance Protocol (AM)",
-    subtitle: "Shields skin against UV/HEV radiation, urban oxidative stress, and hyperpigmentation.",
+    title: "Morning Defense & Cellular Shield Protocol (AM)",
+    subtitle: "Recommended sequence for daytime barrier protection against UV/HEV radiation, oxidative stress, and hyperpigmentation.",
     steps: [
-      { step: "STEP 01 • TREAT", productId: "vitamin-c-serum", note: "Apply 3–4 drops on clean skin to neutralize free radicals and brighten tone." },
-      { step: "STEP 02 • HYDRATE", productId: "brightening-complex-day", note: "Lock in multi-depth hydration and Japanese Oler Blend-II brightening actives." },
-      { step: "STEP 03 • SHIELD", productId: "skinoshell-spray", note: "Seal with broad-spectrum SPF 50 PA+++ UVA/UVB & HEV blue-light protection." }
+      { step: "PHASE 01 • ANTIOXIDANT", productId: "vitamin-c-serum", note: "Apply 3–4 drops to neutralize free radicals, suppress melanogenesis, and support cellular defense." },
+      { step: "PHASE 02 • HYDRATE & DEFEND", productId: "brightening-complex-day", note: "Lock in multi-depth moisture with Japanese Clair Blanche III™ while providing baseline SPF 15+ shielding." },
+      { step: "PHASE 03 • PHOTOPROTECT", productId: "skinoshell-spray", note: "Seal with broad-spectrum SPF 50 PA+++ encapsulated SUNCAT DE™ filters for complete UVA/UVB/HEV defense." }
     ]
   },
   pm: {
-    title: "Nocturnal Cellular Repair Protocol (PM)",
-    subtitle: "Accelerates overnight collagen synthesis, melasma depigmentation, and 72-hour barrier recovery.",
+    title: "Nocturnal Repair & Dermal Renewal Protocol (PM)",
+    subtitle: "Recommended sequence for nighttime cellular turnover, epidermal barrier restoration, and targeted depigmentation.",
     steps: [
-      { step: "STEP 01 • TARGET", productId: "liposomal-serum", note: "Deliver encapsulated liposomes deep into dermal layers to fade stubborn dark spots." },
-      { step: "STEP 02 • RENEW", productId: "night-care", note: "Stimulate cellular turnover and firm fine lines with Retinol & Matrixyl 3000." },
-      { step: "STEP 03 • BARRIER LOCK", productId: "moisturizer-acne", note: "Restore lipid barrier overnight with oil-free Pentavitin 72-hour moisture lock." }
+      { step: "PHASE 01 • TARGETED ACTIVES", productId: "liposomal-serum", note: "Deliver micro-encapsulated liposomal Azelaic Acid & 4-Butylresorcinol deep into basal epidermal layers." },
+      { step: "PHASE 02 • COLLAGEN SYNTHESIS", productId: "night-care", note: "Promote nighttime matrix synthesis and epidermal firming with encapsulated Retinol & Matrixyl 3000." },
+      { step: "PHASE 03 • BARRIER SEAL", productId: "moisturizer-dry", note: "Seal stratum corneum lipid barrier with 48-hour continuous Aquaxyl™ moisture lock." }
     ]
   }
 };
@@ -1066,12 +780,10 @@ function renderRegimen(mode = 'am') {
   if (!stepsGrid || !bundleBar) return;
 
   const protocol = REGIMEN_PROTOCOLS[mode] || REGIMEN_PROTOCOLS.am;
-  let totalPrice = 0;
 
   stepsGrid.innerHTML = protocol.steps.map(item => {
     const p = state.products.find(prod => prod.id === item.productId);
     if (!p) return '';
-    totalPrice += p.price;
     return `
       <div class="regimen-step-card">
         <span class="regimen-step-num">${item.step}</span>
@@ -1079,13 +791,13 @@ function renderRegimen(mode = 'am') {
           <img src="${p.image}" alt="${p.name}" loading="lazy">
         </div>
         <div class="regimen-step-body">
-          <span class="product-cat">${p.category} &bull; ${p.volume.split('/')[0].trim()}</span>
+          <span class="product-cat">${p.category} &bull; ${p.volume}</span>
           <h4 onclick="openQuickView('${p.id}')">${p.name}</h4>
           <p>${item.note}</p>
           <div class="regimen-step-footer">
-            <strong>₹${p.price.toLocaleString('en-IN')}</strong>
-            <button type="button" class="btn btn-outline btn-sm" onclick="addToCart('${p.id}')">
-              <i class="fa-solid fa-plus"></i> Add Step
+            <span class="regimen-mrp">M.R.P. ₹${p.price.toLocaleString('en-IN')}</span>
+            <button type="button" class="btn btn-outline btn-sm" onclick="openQuickView('${p.id}')">
+              <i class="fa-solid fa-file-medical"></i> View Monograph
             </button>
           </div>
         </div>
@@ -1094,19 +806,16 @@ function renderRegimen(mode = 'am') {
   }).join('');
 
   bundleBar.innerHTML = `
-    <div class="regimen-bundle-info">
-      <span class="bundle-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Complete 3-Step Clinical Kit</span>
-      <h4>${protocol.title}</h4>
-      <p>${protocol.subtitle}</p>
-    </div>
-    <div class="regimen-bundle-action">
-      <div class="bundle-price-tag">
-        <small>Complete 3-Product Kit Total</small>
-        <strong>₹${totalPrice.toLocaleString('en-IN')}</strong>
+    <div class="regimen-protocol-box">
+      <div class="protocol-info">
+        <span class="protocol-badge"><i class="fa-solid fa-user-doctor"></i> Clinical Protocol Reference</span>
+        <h4>${protocol.title}</h4>
+        <p>${protocol.subtitle}</p>
       </div>
-      <button type="button" class="btn btn-gold btn-lg" onclick="addRegimenBundle('${mode}')">
-        <i class="fa-solid fa-bag-shopping"></i> Add Complete ${mode.toUpperCase()} Routine
-      </button>
+      <div class="protocol-disclaimer">
+        <i class="fa-solid fa-circle-info"></i>
+        <span><strong>Physician Guidance:</strong> Formulation sequencing, concentration, and frequency should be determined according to the individual patient's skin condition by the prescribing Dermatologist.</span>
+      </div>
     </div>
   `;
 }
@@ -1117,25 +826,7 @@ window.switchRegimen = function(mode) {
   renderRegimen(mode);
 };
 
-window.addRegimenBundle = function(mode) {
-  const protocol = REGIMEN_PROTOCOLS[mode] || REGIMEN_PROTOCOLS.am;
-  protocol.steps.forEach(item => {
-    const product = state.products.find(p => p.id === item.productId);
-    if (!product) return;
-    const existing = state.cart.find(c => c.id === product.id);
-    if (existing) {
-      existing.quantity += 1;
-    } else {
-      state.cart.push({ ...product, quantity: 1 });
-    }
-  });
-  saveCart();
-  updateCartUI();
-  openCart();
-  showToast(`Complete ${mode.toUpperCase()} Clinical Regimen (3 items) added to cart!`);
-};
-
-// --- Footer Category Quick Filter ---
+// Filter by Category Quick Jump
 window.filterByCategory = function(categoryName) {
   state.category = categoryName;
   document.querySelectorAll('.cat-tab').forEach(tab => {
@@ -1145,76 +836,83 @@ window.filterByCategory = function(categoryName) {
   document.getElementById('shop')?.scrollIntoView({ behavior: 'smooth' });
 };
 
-// --- Policy & Dermatologist Support Modal ---
+// Trade & Doctor Inquiry Modal
+window.openInquiryModal = function(productId = '') {
+  const medSelect = document.getElementById('inquiry-medicine');
+  if (medSelect && productId) {
+    medSelect.value = productId;
+  }
+  inquiryOverlay?.classList.add('active');
+  inquiryModal?.classList.add('active');
+};
+
+function closeInquiryModal() {
+  inquiryOverlay?.classList.remove('active');
+  inquiryModal?.classList.remove('active');
+}
+
+function handleInquirySubmit(e) {
+  e.preventDefault();
+  const name = document.getElementById('inq-name')?.value || '';
+  const role = document.getElementById('inq-role')?.value || '';
+  const org = document.getElementById('inq-org')?.value || '';
+  const phone = document.getElementById('inq-phone')?.value || '';
+  const medId = document.getElementById('inquiry-medicine')?.value || '';
+  const med = state.products.find(p => p.id === medId);
+  const medName = med ? med.name : 'All Mellkderma Formulations';
+
+  closeInquiryModal();
+  showToast(`Thank you, ${name}. Your trade inquiry for "${medName}" has been submitted to Mellkderma Skincare Private Limited.`);
+  inquiryForm?.reset();
+}
+
+// Policy Modal
 const POLICY_CONTENT = {
-  shipping: {
-    title: "Shipping & Express Delivery Policy",
-    icon: "fa-truck-fast",
+  manufacturing: {
+    title: "Pharmaceutical Quality & Manufacturing Standards",
+    icon: "fa-certificate",
     body: `
-      <p><strong>Mellkderma Skincare Private Limited</strong> dispatches all clinical orders from our temperature-controlled Gurugram facility within 24 hours of confirmation.</p>
+      <p><strong>Mellkderma Skincare Private Limited</strong> operates under rigorous pharmaceutical-grade quality management and cosmetic GMP protocols.</p>
       <ul style="margin: 16px 0; padding-left: 20px; line-height: 1.8; color: var(--slate-body);">
-        <li><strong>Free Express Shipping:</strong> Complimentary on all orders above ₹999 across India.</li>
-        <li><strong>Standard Delivery Timeline:</strong> 1–2 business days for Delhi NCR & Metro cities; 3–5 business days for rest of India.</li>
-        <li><strong>Packaging Integrity:</strong> All serums and sunscreens are sealed in UV-protected outer cartons to preserve active ingredient potency.</li>
+        <li><strong>Cleanroom Formulation:</strong> Manufactured under controlled Class 100,000 cleanroom environments to maintain sterile purity and prevent contamination.</li>
+        <li><strong>Bio-Active Validation:</strong> Every active component (SUNCAT DE, Retinol, Aquaxyl, Clair Blanche III) is verified via HPLC and analytical assay prior to batch compounding.</li>
+        <li><strong>Stability & Accelerated Testing:</strong> Formulations undergo standard accelerated stability testing at 40°C / 75% RH to verify shelf-life integrity and active potency.</li>
       </ul>
     `
   },
-  returns: {
-    title: "Return, Replacement & Refund Policy",
-    icon: "fa-rotate-left",
-    body: `
-      <p>We stand behind the clinical quality of every formulation produced by <strong>Mellkderma Skincare Private Limited</strong>.</p>
-      <ul style="margin: 16px 0; padding-left: 20px; line-height: 1.8; color: var(--slate-body);">
-        <li><strong>7-Day Damaged/Incorrect Item Replacement:</strong> In the rare event that your order arrives damaged or tampered, email <strong>care@mellkderma.com</strong> within 7 days for a free priority replacement.</li>
-        <li><strong>Refund Processing:</strong> Approved refunds are credited back to the original payment method within 5–7 business days.</li>
-      </ul>
-    `
-  },
-  terms: {
-    title: "Terms & Clinical Usage Conditions",
-    icon: "fa-file-contract",
-    body: `
-      <p>All formulations on <strong>www.mellkderma.com</strong> are dermatologist-formulated cosmeceuticals marketed by <strong>Mellkderma Skincare Private Limited</strong> (#155/1, Adarsh Nagar, New Rly Road, Gurugram).</p>
-      <p style="margin-top: 12px; color: var(--slate-body); line-height: 1.7;">For optimal safety, a patch test on the inner forearm 24 hours prior to facial application is recommended when introducing high-potency actives such as Retinol, Vitamin C, or Liposomal depigmenting serums.</p>
-    `
-  },
-  privacy: {
-    title: "Customer Data & Privacy Guarantee",
-    icon: "fa-user-shield",
-    body: `
-      <p><strong>Mellkderma Skincare Private Limited</strong> respects your privacy and protects your personal and skin-consultation records with 256-bit SSL encryption.</p>
-      <p style="margin-top: 12px; color: var(--slate-body); line-height: 1.7;">We never sell or share your phone number, email address, or skin analysis quiz responses with third-party marketers.</p>
-    `
-  },
-  consultation: {
-    title: "Dermatologist Skincare Consultation",
+  disclaimer: {
+    title: "Official Medical & Prescribing Disclaimer",
     icon: "fa-user-doctor",
     body: `
-      <p>Need personalized guidance on combining <strong>Mellkderma</strong> serums, sunscreens, or nocturnal repair treatments for your skin concern?</p>
-      <div style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 14px; padding: 20px; margin: 18px 0;">
-        <p style="margin-bottom: 8px;"><strong><i class="fa-solid fa-envelope text-gold"></i> Clinical Desk:</strong> care@mellkderma.com</p>
-        <p style="margin-bottom: 8px;"><strong><i class="fa-solid fa-location-dot text-gold"></i> Corporate Office:</strong> Mellkderma Skincare Private Limited, #155/1, Adarsh Nagar, New Rly Road, Gurugram</p>
-        <p><strong><i class="fa-solid fa-clock text-gold"></i> Consultation Hours:</strong> Mon – Sat, 10:00 AM to 7:00 PM IST</p>
+      <p>All content published on <strong>www.mellkderma.com</strong> is strictly intended for educational, professional reference, and product information purposes for healthcare practitioners, clinics, and informed patients.</p>
+      <div style="background: #f8fafc; border-left: 4px solid var(--gold-primary); padding: 16px; margin: 16px 0;">
+        <p style="margin: 0; font-size: 0.92rem; color: var(--slate-dark);">
+          <strong>Notice:</strong> Mellkderma products are formulated for clinical efficacy under professional supervision. Nothing on this website constitutes direct medical advice, diagnosis, or prescription. Patients must consult a qualified dermatologist or registered medical practitioner for tailored diagnosis and treatment.
+        </p>
       </div>
-      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px;">
-        <a href="https://wa.me/919999999999?text=Hello%20Mellkderma%20Skincare%20Private%20Limited%2C%20I%20would%20like%20a%20skin%20consultation." target="_blank" rel="noopener" class="btn btn-whatsapp" style="flex: 1;">
-          <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
-        </a>
-        <button type="button" class="btn btn-gold" style="flex: 1;" onclick="closePolicyModal(); openQuiz();">
-          <i class="fa-solid fa-stethoscope"></i> Take 60-Sec Skin Quiz
-        </button>
-      </div>
+    `
+  },
+  distribution: {
+    title: "Institutional Supply & Distribution Network",
+    icon: "fa-truck-medical",
+    body: `
+      <p>Mellkderma Skincare Private Limited partners with licensed pharmaceutical distributors, hospital pharmacies, and dermatology clinics across India.</p>
+      <ul style="margin: 16px 0; padding-left: 20px; line-height: 1.8; color: var(--slate-body);">
+        <li><strong>Corporate Office:</strong> #155/1, Adarsh Nagar, New Rly Road, Gurugram, Haryana.</li>
+        <li><strong>Trade Desk Email:</strong> care@mellkderma.com</li>
+        <li><strong>Supply Channels:</strong> Direct hospital orders, institutional tenders, and regional stockist networks.</li>
+      </ul>
     `
   }
 };
 
 window.openPolicyModal = function(type) {
   if (!policyModalBody) return;
-  const info = POLICY_CONTENT[type] || POLICY_CONTENT.consultation;
+  const info = POLICY_CONTENT[type] || POLICY_CONTENT.disclaimer;
 
   policyModalBody.innerHTML = `
     <div>
-      <div style="width: 56px; height: 56px; border-radius: 16px; background: var(--clinical-teal-light); color: var(--clinical-teal-dark); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 18px;">
+      <div style="width: 56px; height: 56px; border-radius: 16px; background: rgba(212, 175, 55, 0.15); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 18px;">
         <i class="fa-solid ${info.icon}"></i>
       </div>
       <h3 class="quiz-step-title" style="text-align: left; font-size: 1.65rem; margin-bottom: 14px;">${info.title}</h3>
@@ -1233,32 +931,21 @@ function closePolicyModal() {
   policyModal?.classList.remove('active');
 }
 
-// --- Order via WhatsApp ---
-window.orderViaWhatsApp = function() {
-  if (state.cart.length === 0) {
-    showToast('Add items to your cart first to order via WhatsApp');
-    return;
-  }
+// Toast Helper
+function showToast(message) {
+  const container = document.getElementById('toast-container');
+  if (!container) return;
 
-  const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  const discountAmount = state.appliedCoupon ? subtotal * state.appliedCoupon.discount : 0;
-  const shipping = subtotal >= 999 ? 0 : 99;
-  const grandTotal = subtotal - discountAmount + shipping;
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = `<i class="fa-solid fa-circle-check text-gold"></i> <span>${message}</span>`;
+  
+  container.appendChild(toast);
 
-  const lines = [
-    "Hello *Mellkderma Skincare Private Limited*, I would like to place an order:",
-    "",
-    ...state.cart.map(item => `• ${item.name} (${item.volume.split('/')[0].trim()}) x${item.quantity} = ₹${(item.price * item.quantity).toLocaleString('en-IN')}`),
-    "",
-    `Subtotal: ₹${subtotal.toLocaleString('en-IN')}`,
-    ...(discountAmount > 0 ? [`Discount (MELLK10): -₹${discountAmount.toLocaleString('en-IN')}`] : []),
-    `Shipping: ${shipping === 0 ? 'FREE' : `₹${shipping}`}`,
-    `*Grand Total: ₹${grandTotal.toLocaleString('en-IN')}*`,
-    "",
-    "Please share the payment link / delivery confirmation."
-  ];
-
-  const url = `https://wa.me/919999999999?text=${encodeURIComponent(lines.join('\n'))}`;
-  window.open(url, '_blank', 'noopener');
-};
-
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateX(100%)';
+    toast.style.transition = 'all 0.3s ease';
+    setTimeout(() => toast.remove(), 300);
+  }, 3200);
+}
